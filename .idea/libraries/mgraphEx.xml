@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mgraphEx">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/mgraphEx.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
