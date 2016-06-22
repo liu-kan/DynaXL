@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact name="xplor-sui:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/xplor_sui_jar</output-path>
+    <root id="root">
+      <element id="archive" name="xplor-sui.jar">
+        <element id="module-output" name="xplor-sui" />
+      </element>
+      <element id="library" level="project" name="sqlite-jdbc-3.8.11.2" />
+      <element id="library" level="project" name="mgraphEx" />
+    </root>
+  </artifact>
+</component>
