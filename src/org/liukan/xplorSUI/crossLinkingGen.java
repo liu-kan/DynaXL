@@ -46,7 +46,8 @@ public class crossLinkingGen {
             medge e = gs.edges.get(j);
             if (e.id.length() < 1)
                 continue;
-            System.out.println(dupSegid(gs.getNode(e.source),gs.getNode(e.target))+","+gs.getNode(e.target).label);
+            //System.out.println(dupSegid(gs.getNode(e.source),gs.getNode(e.target))+","+gs.getNode(e.target).label);
+            dupSegid(gs.getNode(e.source),gs.getNode(e.target));
         }
 
     }
@@ -60,12 +61,14 @@ public class crossLinkingGen {
             return null;
         Set<String> keys=getKeysByValue(segID2,ssid);
         if(keys.size()>1) {
-            for (String nodeid : keys
-                    ) {
-                System.out.println("=2=="+nodeid.equals(source.id)+source.label);
+            //for (String nodeid : keys)
+            {
+                //System.out.println("=2=");
+                System.out.println(segID2.get(source.id)+","+source.label+","+genNewDupid(source.id,target.id));
+                System.out.println(segID2.get(target.id)+","+target.label+","+genNewDupid(source.id,target.id));
             }
         }else
-            System.out.println("=1=="+keys.toArray()[0]);
+            System.out.println(segID2.get(target.id)+","+target.label+","+ssid);
         return ssid;
     }
 
@@ -84,7 +87,6 @@ public class crossLinkingGen {
         String segid=null;
         if(cn.size()>1) {
             segid = findSegid(cn);//已处理点中 是否有点连接点 如果有返回相连接点sid
-
         }
         if(segid==null)
             segid=genNewSegid(n);
