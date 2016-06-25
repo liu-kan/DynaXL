@@ -49,7 +49,7 @@ public class CtrlInputPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 crossLinkingGen gen = new crossLinkingGen(mg.saveG2graphStru("", 0));
-                gen.genSegid();
+                gen.genSricpt();
             }
         });
     }
