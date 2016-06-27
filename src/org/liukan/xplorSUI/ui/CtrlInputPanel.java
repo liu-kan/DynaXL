@@ -3,55 +3,85 @@ package org.liukan.xplorSUI.ui;
 import org.liukan.mgraph.mgraphx;
 import org.liukan.mgraph.util.dbIO;
 import org.liukan.xplorSUI.crossLinkingGen;
+import org.liukan.xplorSUI.db.dbIO2;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * Created by liuk on 2016/6/22.
  */
 public class CtrlInputPanel {
     private final dbIO dbio;
+    private final dbIO2 dbio2;
     private JButton executeInXplorButton;
     private JButton generateScriptButton;
     private JButton saveCrossLinksModeButton;
     private mgraphx mg;
+    private ArrayList<String> domainDef;
 
-    public CtrlInputPanel(mgraphx _mg, dbIO _dbio) {
+    public CtrlInputPanel(mgraphx _mg, dbIO _dbio, dbIO2 _dbio2) {
         mg = _mg;
         dbio = _dbio;
+        dbio2 = _dbio2;
+        modeTab.setSelectedIndex(1);
+        domainDef = new ArrayList<>();
+
         readCrossLinksModeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int gid = 2;
                 try {
-                    mg.readGfromDB(dbio, 2);
+
+                    mg.readGfromDB(dbio, gid);
 
                 } catch (Exception e2) {
                     System.err.println(e2.getClass().getName() + ": " + e2.getMessage());
                     //System.exit(0);
                 }
+                ArrayList<String> p = dbio2.readCrossLink(gid);
+                textRigid.setText(p.get(0));
+                textFlex.setText(p.get(1));
             }
         });
         saveCrossLinksModeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int gid = -1;
                 try {
-                    mg.saveG2DB("hoho", 2, dbio);
+                    gid = mg.saveG2DB("hoho", 2, dbio);
+
                 } catch (Exception e2) {
                     System.err.println(e2.getClass().getName() + ": " + e2.getMessage());
                     //System.exit(0);
+                    return;
                 }
+                saveCrossLink(gid);
             }
         });
         generateScriptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                crossLinkingGen gen = new crossLinkingGen(mg.saveG2graphStru("", 0));
+                domainDef.clear();
+                String s = textRigid.getText().trim();
+                String s1 = textFlex.getText().trim();
+                if (s.length() < 1 || s1.length() < 1) {
+                    JOptionPane.showMessageDialog(null, "Please input info about Domains and Links!");
+                    return;
+                }
+                domainDef.add(s);
+                domainDef.add(s1);
+                crossLinkingGen gen = new crossLinkingGen(mg.saveG2graphStru("", 0), domainDef);
                 gen.genSricpt();
             }
         });
+    }
+
+    private void saveCrossLink(int gid) {
+        dbio2.saveCrossLink(gid, textRigid.getText().trim(), textFlex.getText().trim());
     }
 
     private JButton readCrossLinksModeButton;
@@ -100,14 +130,18 @@ public class CtrlInputPanel {
         readCrossLinksModeButton.setText("Read Cross-links");
         panel.add(readCrossLinksModeButton, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         modeTab = new JTabbedPane();
+        modeTab.setEnabled(true);
         panel.add(modeTab, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 200), null, 0, false));
         quickMode = new JPanel();
         quickMode.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
+        quickMode.setEnabled(false);
         modeTab.addTab("Quick Mode", quickMode);
         final JLabel label2 = new JLabel();
-        label2.setText("<html>Domain boundaries define like:<br>\n21-22,145-146</html>");
+        label2.setEnabled(false);
+        label2.setText("<html>Domain boundaries define like:<br>\n21,22#145,146</html>");
         quickMode.add(label2, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textBoundary = new JTextField();
+        textBoundary.setEnabled(false);
         quickMode.add(textBoundary, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer3 = new com.intellij.uiDesigner.core.Spacer();
         quickMode.add(spacer3, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
@@ -117,12 +151,12 @@ public class CtrlInputPanel {
         expMode.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
         modeTab.addTab("Expert Mode", expMode);
         final JLabel label3 = new JLabel();
-        label3.setText("<html>Domains define like:<br>\n1-19,148-250#24-142</html>");
+        label3.setText("<html>\nDomains define like:<br>\n1:19,148:250#24:142<br>\nDyn.fix and Dyn.group are<br>\nseparated by #\n</html>");
         expMode.add(label3, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textRigid = new JTextField();
         expMode.add(textRigid, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final JLabel label4 = new JLabel();
-        label4.setText("<html>Linkers define like:<br>\n20-23#143-147</html>");
+        label4.setText("<html>\nLinkers define like:<br>\n20:23,143:147\n</html>");
         expMode.add(label4, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textFlex = new JTextField();
         expMode.add(textFlex, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));

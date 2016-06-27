@@ -2,6 +2,7 @@ package org.liukan.xplorSUI;
 
 import org.liukan.mgraph.mgraphxEx;
 import org.liukan.mgraph.util.dbIO;
+import org.liukan.xplorSUI.db.dbIO2;
 import org.liukan.xplorSUI.db.thePath;
 import org.liukan.xplorSUI.ui.CtrlInputPanel;
 
@@ -19,12 +20,14 @@ import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
  * Created by liuk on 2016/6/14.
  */
 public class crossLinkingUI {
+    private final dbIO2 dbio2;
     String dbUrl;
     dbIO dbio;
 
     public crossLinkingUI() {
         dbUrl = thePath.getPath()+ File.separator+"db"+File.separator+"db.sqlite";
         dbio=new dbIO("org.sqlite.JDBC","jdbc:sqlite:"+dbUrl,null,null);
+        dbio2=new dbIO2("org.sqlite.JDBC","jdbc:sqlite:"+dbUrl,null,null);
         JFrame  frame = new JFrame("DynaXL");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -32,7 +35,7 @@ public class crossLinkingUI {
         mgraphxEx c=new mgraphxEx(cl);
         c.gpanel.setupGraphStyle(25,32,2,false);
         JPanel p;
-        p = new CtrlInputPanel(c.gpanel,dbio).panel;
+        p = new CtrlInputPanel(c.gpanel,dbio,dbio2).panel;
         frame.getContentPane().add(c,BorderLayout.CENTER);
         frame.getContentPane().add(p,BorderLayout.EAST);
 

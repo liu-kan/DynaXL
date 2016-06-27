@@ -5,8 +5,17 @@
       <element id="archive" name="xplor-sui.jar">
         <element id="module-output" name="xplor-sui" />
       </element>
-      <element id="library" level="project" name="sqlite-jdbc-3.8.11.2" />
-      <element id="library" level="project" name="mgraphEx" />
+      <element id="directory" name="out" />
+      <element id="directory" name="db">
+        <element id="file-copy" path="$PROJECT_DIR$/db/db.sqlite" />
+      </element>
+      <element id="directory" name="templates">
+        <element id="dir-copy" path="$PROJECT_DIR$/templates" />
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="library" level="project" name="libs" />
     </root>
   </artifact>
 </component>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="commons-io-2.5">
+    <archive path="D:/liuk/wipm/xplor-sui/libs/commons-io-2.5.jar" />
+  </library>
+  <library name="freemarker">
+    <archive path="D:/liuk/wipm/xplor-sui/libs/freemarker.jar" />
+  </library>
+  <library name="mgraphEx">
+    <archive path="D:/liuk/wipm/xplor-sui/libs/mgraphEx.jar" />
+  </library>
+  <library name="sqlite-jdbc-3.8.11.2">
+    <archive path="D:/liuk/wipm/xplor-sui/libs/sqlite-jdbc-3.8.11.2.jar" />
+  </library>
+</eclipse-userlibraries>
+
