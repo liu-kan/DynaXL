@@ -5,6 +5,7 @@ import org.liukan.mgraph.util.dbIO;
 import org.liukan.xplorSUI.db.dbIO2;
 import org.liukan.xplorSUI.db.thePath;
 import org.liukan.xplorSUI.ui.CtrlInputPanel;
+import org.liukan.xplorSUI.ui.editEdgeDB;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +33,8 @@ public class crossLinkingUI {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         Locale cl=new Locale("en", "US","BIO");
-        mgraphxEx c=new mgraphxEx(cl);
+        editEdgeDB ee=new editEdgeDB();
+        mgraphxEx c=new mgraphxEx(cl,ee);
         c.gpanel.setupGraphStyle(25,32,2,false);
         JPanel p;
         p = new CtrlInputPanel(c.gpanel,dbio,dbio2).panel;
