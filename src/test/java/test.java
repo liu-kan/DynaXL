@@ -15,7 +15,7 @@ import java.util.List;
 public class test {
     public static void main(String[] args){
         String pdbDir= thePath.getPath()+ File.separator+"db"+ File.separator;
-        File file =new File(pdbDir+"BS2_84.pdb");
+        File file =new File(pdbDir+"3eza_AH.pdb");
         InputStream inStream = null;
         try {
             inStream = new FileInputStream(file);
