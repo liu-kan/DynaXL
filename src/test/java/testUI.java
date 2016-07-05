@@ -1,9 +1,7 @@
 import org.biojava.nbio.structure.Structure;
-import org.biojava.nbio.structure.StructureIO;
-import org.biojava.nbio.structure.align.gui.jmol.StructureAlignmentJmol;
 import org.biojava.nbio.structure.gui.BiojavaJmol;
 import org.biojava.nbio.structure.io.PDBFileParser;
-import org.liukan.xplorSUI.db.thePath;
+import org.liukan.DynaXL.db.thePath;
 
 import java.io.*;
 

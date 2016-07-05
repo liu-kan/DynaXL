@@ -1,11 +1,11 @@
-package org.liukan.xplorSUI;
+package org.liukan.DynaXL;
 
 import org.liukan.mgraph.mgraphxEx;
 import org.liukan.mgraph.util.dbIO;
-import org.liukan.xplorSUI.db.dbIO2;
-import org.liukan.xplorSUI.db.thePath;
-import org.liukan.xplorSUI.ui.CtrlInputPanel;
-import org.liukan.xplorSUI.ui.editEdgeDB;
+import org.liukan.DynaXL.db.dbIO2;
+import org.liukan.DynaXL.db.thePath;
+import org.liukan.DynaXL.ui.CtrlInputPanel;
+import org.liukan.DynaXL.ui.editEdgeDB;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +14,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Locale;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 /**
  * Created by liuk on 2016/6/14.

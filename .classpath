@@ -20,5 +20,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: javaws:javaws:1.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: net.sourceforge.jmol:jmol:13.0.14"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.biojava:jcolorbrewer:5.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/miglayout-4.0-ideutil"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

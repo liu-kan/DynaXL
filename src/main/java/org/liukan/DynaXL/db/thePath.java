@@ -1,4 +1,4 @@
-package org.liukan.xplorSUI.db;
+package org.liukan.DynaXL.db;
 
 import java.io.File;  
 import java.net.URL;  

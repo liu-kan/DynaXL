@@ -1,9 +1,9 @@
-package org.liukan.xplorSUI;
+package org.liukan.DynaXL;
 
 import org.liukan.mgraph.graphStru;
 import org.liukan.mgraph.medge;
 import org.liukan.mgraph.mnode;
-import org.liukan.xplorSUI.scriptRes.*;
+import org.liukan.DynaXL.scriptRes.*;
 
 import javax.swing.*;
 import java.util.*;
@@ -40,6 +40,7 @@ public class crossLinkingGen {
      */
     private ArrayList<String> domainDef;
     private Map<String,String> segIDofLinks0;
+    private String WorkSpace;
     public static <T, E> Set<T> getKeysByValue(Map<T, E> map, E value) {
         Set<T> keys = new HashSet<T>();
         for (Map.Entry<T, E> entry : map.entrySet()) {
@@ -49,7 +50,8 @@ public class crossLinkingGen {
         }
         return keys;
     }
-    public crossLinkingGen(graphStru gs, ArrayList<String> domainDef) {
+    public crossLinkingGen(graphStru gs, ArrayList<String> domainDef, String workSpaceDir) {
+        WorkSpace=workSpaceDir;
         segidPrefix="XL";
         procedNodes=new HashMap<mnode,String>();
         this.gs=gs;
@@ -61,7 +63,7 @@ public class crossLinkingGen {
         segIDofLinks0=new TreeMap<>();
         scripts = new scriptRes();
         try {
-            scripts.init();
+            scripts.init(WorkSpace);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -209,7 +211,6 @@ public class crossLinkingGen {
             return;
         try {
             scripts.process();
-
         } catch (Exception e) {
             e.printStackTrace();
         }

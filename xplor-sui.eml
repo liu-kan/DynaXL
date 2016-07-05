@@ -25,5 +25,6 @@
 		<level name="Maven: javaws:javaws:1.0" value="project"/>
 		<level name="Maven: net.sourceforge.jmol:jmol:13.0.14" value="project"/>
 		<level name="Maven: org.biojava:jcolorbrewer:5.2" value="project"/>
+		<level name="miglayout-4.0-ideutil" value="project"/>
 	</levels>
 </component>

@@ -1,4 +1,4 @@
-package org.liukan.xplorSUI.db;
+package org.liukan.DynaXL.db;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -140,7 +140,7 @@ public class dbIO2 {
         try {
             PreparedStatement statement=null;
             stmt=c.createStatement();
-            rs = stmt.executeQuery( "select * FROM parms  where name="+name+";" );
+            rs = stmt.executeQuery( "select * FROM parms  where name=\""+name+"\";" );
             if (!rs.isBeforeFirst() ) {
                 return null;
             } else{
@@ -162,7 +162,7 @@ public class dbIO2 {
         try {
             PreparedStatement statement=null;
             stmt=c.createStatement();
-            ResultSet rs = stmt.executeQuery( "select * FROM parms  where name="+name+";" );
+            ResultSet rs = stmt.executeQuery( "select * FROM parms  where name=\""+name+"\";" );
             if (!rs.isBeforeFirst() ) {
                 String sql = "INSERT INTO parms (name, value)" +
                         "VALUES (?, ?)";

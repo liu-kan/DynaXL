@@ -1,4 +1,4 @@
-package org.liukan.xplorSUI.scriptRes;
+package org.liukan.DynaXL.scriptRes;
 
 /**
  * Created by liuk on 2016/6/27.

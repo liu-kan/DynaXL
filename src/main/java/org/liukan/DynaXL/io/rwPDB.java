@@ -1,6 +1,6 @@
-package org.liukan.xplorSUI.io;
+package org.liukan.DynaXL.io;
 
-import org.liukan.xplorSUI.db.thePath;
+import org.liukan.DynaXL.db.thePath;
 
 import java.io.*;
 import java.nio.charset.Charset;

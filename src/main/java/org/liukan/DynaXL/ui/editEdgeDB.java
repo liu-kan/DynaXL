@@ -1,4 +1,4 @@
-package org.liukan.xplorSUI.ui;
+package org.liukan.DynaXL.ui;
 
 import org.liukan.mgraph.ui.absEditEdge;
 

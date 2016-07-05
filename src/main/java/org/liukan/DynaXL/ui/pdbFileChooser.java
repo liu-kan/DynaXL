@@ -1,16 +1,9 @@
-package org.liukan.xplorSUI.ui;
+package org.liukan.DynaXL.ui;
 
-import org.biojava.nbio.structure.Structure;
-import org.biojava.nbio.structure.StructureIO;
 import org.biojava.nbio.structure.align.gui.jmol.JmolPanel;
-import org.biojava.nbio.structure.align.util.AtomCache;
-import org.biojava.nbio.structure.gui.BiojavaJmol;
-import org.biojava.nbio.structure.io.FileParsingParameters;
-import org.biojava.nbio.structure.io.PDBFileParser;
-import org.biojava.nbio.structure.io.PDBFileReader;
 import org.jmol.api.JmolSimpleViewer;
-import org.liukan.xplorSUI.db.thePath;
-import org.liukan.xplorSUI.io.rwPDB;
+import org.liukan.DynaXL.db.thePath;
+import org.liukan.DynaXL.io.rwPDB;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -22,6 +15,7 @@ import java.io.*;
 
 public class pdbFileChooser extends JDialog {
     private final JScrollPane scroll;
+    private String pdbDir;
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -39,7 +33,8 @@ public class pdbFileChooser extends JDialog {
     }
 
     private void intPreviewer() {
-        String pdbDir = thePath.getPath() + File.separator + "db" + File.separator;
+        if (pdbDir == null)
+            pdbDir = thePath.getPath() + File.separator + "db" + File.separator;
   /*      File file = new File(pdbDir + "3eza_AH.pdb");
         InputStream inStream = null;
         try {
@@ -139,7 +134,8 @@ public class pdbFileChooser extends JDialog {
 
     }
 
-    public pdbFileChooser() {
+    public pdbFileChooser(String pdbDir) {
+        this.pdbDir = pdbDir;
         setContentPane(contentPane);
         setModal(true);
         choosedPath = null;
@@ -185,6 +181,16 @@ public class pdbFileChooser extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        pack();
+    }
+
+    public void showCenter() {
+        final Toolkit toolkit = Toolkit.getDefaultToolkit();
+        final Dimension screenSize = toolkit.getScreenSize();
+        final int x = (screenSize.width - getWidth()) / 2;
+        final int y = (screenSize.height - getHeight()) / 2;
+        setLocation(x, y);
+        setVisible(true);
     }
 
     private void onOK() {
@@ -198,9 +204,9 @@ public class pdbFileChooser extends JDialog {
     }
 
     public static void main(String[] args) {
-        pdbFileChooser dialog = new pdbFileChooser();
-        dialog.pack();
-        dialog.setVisible(true);
+        pdbFileChooser dialog = new pdbFileChooser(null);
+
+        dialog.showCenter();
         System.exit(0);
     }
 

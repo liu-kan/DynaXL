@@ -7,16 +7,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec6fd756-5bf7-482a-8b21-89e7a9120400" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/io/rwPDB.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/JmolPL.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/miglayout_4_0_ideutil.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.form" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setWorkDir.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/swingx_all_1_6_4.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.form" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/test.java" afterPath="$PROJECT_DIR$/src/test/java/test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/testUI.java" afterPath="$PROJECT_DIR$/src/test/java/testUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xplor-sui.eml" afterPath="$PROJECT_DIR$/xplor-sui.eml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/crossLinkingGen.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingGen.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/crossLinkingUI.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/db/dbIO2.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/db/dbIO2.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/db/thePath.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/db/thePath.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/io/rwPDB.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/io/rwPDB.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/breakResid.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/breakResid.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/scriptRes.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/scriptRes.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segIDandNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segIDandNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segidAndResidAndDupOfNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segidAndResidAndDupOfNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segidAndResidAndFixOfLink.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segidAndResidAndFixOfLink.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segidAndResidOfNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segidAndResidOfNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.form" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.form" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/JmolPL.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/JmolPL.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/editEdgeDB.form" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/editEdgeDB.form" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/editEdgeDB.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/editEdgeDB.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.form" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/pdbFileChooser.form" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/pdbFileChooser.java" />
     </list>
     <ignored path="xplor-sui.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,121 +59,135 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="testUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/testUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="36" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3eza_AH.pdb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/3eza_AH.pdb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95766">
-              <caret line="0" column="38" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="rwPDB.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/io/rwPDB.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/io/rwPDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1609">
+            <state relative-caret-position="1520">
               <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1965#1966#0" expanded="false" />
+                <element signature="e#2009#2010#0" expanded="false" />
+                <element signature="e#2045#2046#0" expanded="false" />
+                <element signature="e#2089#2090#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pdbFileChooser.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pdbFileChooser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.java">
+      <file leaf-file-name="pdbFileChooser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/pdbFileChooser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
+            <state relative-caret-position="564">
+              <caret line="206" column="55" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1239#1240#0" expanded="true" />
-                <element signature="e#1273#1274#0" expanded="true" />
-                <element signature="method#intPreviewer#0;class#pdbFileChooser#0" expanded="false" />
-                <element signature="e#5915#5916#0" expanded="true" />
-                <element signature="e#5953#5954#0" expanded="true" />
-                <element signature="e#6084#6085#0" expanded="true" />
-                <element signature="e#6126#6127#0" expanded="true" />
-                <element signature="e#6338#6339#0" expanded="true" />
-                <element signature="e#6380#6381#0" expanded="true" />
-                <element signature="e#6545#6546#0" expanded="true" />
-                <element signature="e#6587#6588#0" expanded="true" />
-                <element signature="initializer##0;class#pdbFileChooser#0" expanded="true" />
-                <element signature="initializer##0;class#pdbFileChooser#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="CtrlInputPanel.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.form">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CtrlInputPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.java">
+      <file leaf-file-name="setPdbFiles.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setPdbFiles.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="190">
+              <caret line="83" column="49" selection-start-line="83" selection-start-column="49" selection-end-line="83" selection-end-column="49" />
               <folding>
-                <element signature="initializer##0;class#CtrlInputPanel#0" expanded="true" />
-                <element signature="docComment;method#$$$setupUI$$$#0;class#CtrlInputPanel#0" expanded="false" />
-                <element signature="method#$$$setupUI$$$#0;class#CtrlInputPanel#0" expanded="false" />
+                <element signature="e#965#966#0" expanded="true" />
+                <element signature="e#1003#1004#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+                <element signature="e#1177#1178#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1431#1432#0" expanded="true" />
+                <element signature="e#1596#1597#0" expanded="true" />
+                <element signature="e#1638#1639#0" expanded="true" />
+                <element signature="initializer##0;class#setPdbFiles#0" expanded="true" />
+                <element signature="initializer##0;class#setPdbFiles#0" expanded="true" />
+                <element signature="e#9561#9562#0" expanded="true" />
+                <element signature="e#9595#9596#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Main.java">
+      <file leaf-file-name="TestListModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/TestListModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+            <state relative-caret-position="95">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2035#2036#0" expanded="true" />
+                <element signature="e#2070#2071#0" expanded="true" />
+                <element signature="e#2105#2106#0" expanded="true" />
+                <element signature="e#2140#2141#0" expanded="true" />
+                <element signature="e#2964#2965#0" expanded="true" />
+                <element signature="e#3015#3016#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JmolPL.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/JmolPL.java">
+      <file leaf-file-name="CtrlInputPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+            <state relative-caret-position="437">
+              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+              <folding>
+                <element signature="initializer##0;class#CtrlInputPanel#0" expanded="true" />
+                <element signature="initializer##0;class#CtrlInputPanel#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scriptRes.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/scriptRes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BS3_1.pdb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/target/classes/db/BS3_1.pdb">
+      <file leaf-file-name="crossLinkingUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="87">
+              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1823#1824#0" expanded="true" />
+                <element signature="e#1877#1878#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setWorkDir.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setWorkDir.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2071">
+              <caret line="109" column="45" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#948#949#0" expanded="true" />
+                <element signature="e#975#976#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -179,13 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/crossLinkingGen.java" />
-        <option value="$PROJECT_DIR$/src/crossLinkingUI.java" />
-        <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/db/thePath.java" />
-        <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/InputPanel.form" />
-        <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/InputPanel.java" />
-        <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/CtrlInputPanel.jfd" />
-        <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/tt.jfd" />
         <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/cinp.form" />
         <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/cinp.java" />
         <option value="$PROJECT_DIR$/src/org/liukan/xplorSUI/scriptRes/S.java" />
@@ -224,8 +251,19 @@
         <option value="$PROJECT_DIR$/src/test/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.form" />
         <option value="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.form" />
         <option value="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/setWorkDir.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.form" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/scriptRes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingGen.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/db/dbIO2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setWorkDir.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.form" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/TestListModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/pdbFileChooser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.java" />
       </list>
     </option>
   </component>
@@ -242,10 +280,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -282,9 +320,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -313,69 +348,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xplor-sui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xplor-sui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pdb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xplor-sui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xplor-sui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xplor-sui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xplor-sui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,7 +374,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xplorSUI" />
+              <option name="myItemId" value="DynaXL" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,7 +400,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xplorSUI" />
+              <option name="myItemId" value="DynaXL" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -457,16 +430,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xplorSUI" />
+              <option name="myItemId" value="DynaXL" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
+              <option name="myItemId" value="scriptRes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CtrlInputPanel" />
-              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -488,10 +457,27 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xplor-sui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xplor-sui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
       </pane>
       <pane id="Scratches" />
     </panes>
@@ -499,13 +485,16 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/miglayout-4.0.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="279" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="508" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -523,55 +512,15 @@
       <recent name="E:\doc\proj\xplor-sui\out\production\xplor-sui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.pdbFileChooser">
-    <configuration default="false" name="crossLinkingUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.liukan.xplorSUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="org.liukan.xplorSUI.crossLinkingUI" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="xplor-sui" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="rwPDB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.liukan.xplorSUI.io.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="org.liukan.xplorSUI.io.rwPDB" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="xplor-sui" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.TestListModel">
     <configuration default="false" name="pdbFileChooser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="org.liukan.xplorSUI.ui.*" />
+          <option name="PATTERN" value="org.liukan.DynaXL.ui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="org.liukan.xplorSUI.ui.pdbFileChooser" />
+      <option name="MAIN_CLASS_NAME" value="org.liukan.DynaXL.ui.pdbFileChooser" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -584,14 +533,14 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="JmolPL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="setWorkDir" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="org.liukan.xplorSUI.ui.*" />
+          <option name="PATTERN" value="org.liukan.DynaXL.ui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="org.liukan.xplorSUI.ui.JmolPL" />
+      <option name="MAIN_CLASS_NAME" value="org.liukan.DynaXL.ui.setWorkDir" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -604,9 +553,54 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration default="false" name="crossLinkingUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.liukan.DynaXL.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="org.liukan.DynaXL.crossLinkingUI" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="xplor-sui" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="setPdbFiles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.liukan.DynaXL.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="org.liukan.DynaXL.ui.setPdbFiles" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="xplor-sui" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestListModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.liukan.DynaXL.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="org.liukan.DynaXL.ui.TestListModel" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -854,19 +848,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.crossLinkingUI" />
-      <item index="1" class="java.lang.String" itemvalue="Application.rwPDB" />
-      <item index="2" class="java.lang.String" itemvalue="Application.pdbFileChooser" />
-      <item index="3" class="java.lang.String" itemvalue="Application.JmolPL" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="0" class="java.lang.String" itemvalue="Application.pdbFileChooser" />
+      <item index="1" class="java.lang.String" itemvalue="Application.setWorkDir" />
+      <item index="2" class="java.lang.String" itemvalue="Application.crossLinkingUI" />
+      <item index="3" class="java.lang.String" itemvalue="Application.setPdbFiles" />
+      <item index="4" class="java.lang.String" itemvalue="Application.TestListModel" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.pdbFileChooser" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="2" class="java.lang.String" itemvalue="Application.JmolPL" />
-        <item index="3" class="java.lang.String" itemvalue="Application.rwPDB" />
-        <item index="4" class="java.lang.String" itemvalue="Application.crossLinkingUI" />
+        <item index="0" class="java.lang.String" itemvalue="Application.TestListModel" />
+        <item index="1" class="java.lang.String" itemvalue="Application.setPdbFiles" />
+        <item index="2" class="java.lang.String" itemvalue="Application.crossLinkingUI" />
+        <item index="3" class="java.lang.String" itemvalue="Application.pdbFileChooser" />
+        <item index="4" class="java.lang.String" itemvalue="Application.setWorkDir" />
       </list>
     </recent_temporary>
   </component>
@@ -896,23 +890,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32505643" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32435465" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.50321543" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10045147" sideWeight="0.49785638" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19416386" sideWeight="0.49785638" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33796296" sideWeight="0.49678457" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21382637" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973205" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21332519" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24938875" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -973,10 +968,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/liukan/xplorSUI/InputPanel.form" />
-    <entry file="file://$PROJECT_DIR$/src/org/liukan/xplorSUI/CtrlInputPanel.java" />
-    <entry file="file://$PROJECT_DIR$/src/org/liukan/xplorSUI/tt.java" />
-    <entry file="file://$PROJECT_DIR$/src/org/liukan/xplorSUI/tt.jfd" />
     <entry file="file://$PROJECT_DIR$/src/org/liukan/xplorSUI/CtrlInputPanel.jfd" />
     <entry file="file://$PROJECT_DIR$/src/org/liukan/xplorSUI/cinp.java" />
     <entry file="file://$PROJECT_DIR$/src/org/liukan/xplorSUI/cinp.form" />
@@ -989,14 +980,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/isop_patch3.inp.ftl" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segidAndResidAndDupOfNode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segidAndResidAndDupOfNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="38" selection-start-line="5" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segidAndResidOfNode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segidAndResidOfNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="32" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="32" />
@@ -1011,14 +1002,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/xplor-sui/templates/explict_all_0513_2016_1.tbl.ftl" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segidAndResidAndFixOfLink.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segidAndResidAndFixOfLink.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="28" column="26" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/breakResid.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/breakResid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="23" />
@@ -1030,13 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/db/dbIO2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4000">
-          <caret line="163" column="37" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1069,46 +1053,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/crossLinkingGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/editEdgeDB.form">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/editEdgeDB.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/editEdgeDB.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/editEdgeDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
           <caret line="93" column="37" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
           <folding>
-            <element signature="e#859#860#0" expanded="false" />
-            <element signature="e#901#902#0" expanded="false" />
-            <element signature="e#1113#1114#0" expanded="false" />
-            <element signature="e#1155#1156#0" expanded="false" />
-            <element signature="e#1320#1321#0" expanded="false" />
-            <element signature="e#1362#1363#0" expanded="false" />
-            <element signature="e#1941#1942#0" expanded="false" />
-            <element signature="e#2027#2028#0" expanded="false" />
-            <element signature="e#2076#2077#0" expanded="false" />
-            <element signature="e#2105#2106#0" expanded="false" />
-            <element signature="e#2153#2154#0" expanded="false" />
-            <element signature="e#2180#2181#0" expanded="false" />
+            <element signature="e#857#858#0" expanded="false" />
+            <element signature="e#899#900#0" expanded="false" />
+            <element signature="e#1111#1112#0" expanded="false" />
+            <element signature="e#1153#1154#0" expanded="false" />
+            <element signature="e#1318#1319#0" expanded="false" />
+            <element signature="e#1360#1361#0" expanded="false" />
+            <element signature="e#1939#1940#0" expanded="false" />
+            <element signature="e#2025#2026#0" expanded="false" />
+            <element signature="e#2074#2075#0" expanded="false" />
+            <element signature="e#2103#2104#0" expanded="false" />
+            <element signature="e#2151#2152#0" expanded="false" />
+            <element signature="e#2178#2179#0" expanded="false" />
             <element signature="initializer##0;class#editEdgeDB#0" expanded="false" />
-            <element signature="e#10378#10379#0" expanded="false" />
-            <element signature="e#10412#10413#0" expanded="false" />
+            <element signature="e#10376#10377#0" expanded="false" />
+            <element signature="e#10410#10411#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/db/thePath.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/db/thePath.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="6" column="20" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="20" />
@@ -1142,17 +1116,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/segIDandNode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/segIDandNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/scriptRes/scriptRes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1167,19 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/crossLinkingUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1915#1916#0" expanded="false" />
-            <element signature="e#1969#1970#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1187,7 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,7 +1154,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/testUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="152">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="36" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -1209,88 +1162,175 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/JmolPL.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/JmolPL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="228">
           <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="e#6332#6333#0" expanded="false" />
+            <element signature="e#6360#6361#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="285">
           <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.form">
-      <provider selected="true" editor-type-id="ui-designer">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/pdbFileChooser.form">
+      <provider editor-type-id="ui-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/3eza_AH.pdb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95766">
+        <state relative-caret-position="0">
           <caret line="0" column="38" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/io/rwPDB.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/io/rwPDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1609">
+        <state relative-caret-position="1520">
           <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="false" />
+            <element signature="e#2009#2010#0" expanded="false" />
+            <element signature="e#2045#2046#0" expanded="false" />
+            <element signature="e#2089#2090#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.form">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/db/dbIO2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="142" column="81" selection-start-line="142" selection-start-column="81" selection-end-line="142" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1877#1878#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <element signature="initializer##0;class#CtrlInputPanel#0" expanded="true" />
+            <element signature="initializer##0;class#CtrlInputPanel#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/scriptRes/scriptRes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setWorkDir.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2071">
+          <caret line="109" column="45" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/CtrlInputPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/TestListModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="95">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="initializer##0;class#CtrlInputPanel#0" expanded="true" />
-            <element signature="docComment;method#$$$setupUI$$$#0;class#CtrlInputPanel#0" expanded="false" />
-            <element signature="method#$$$setupUI$$$#0;class#CtrlInputPanel#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2035#2036#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2105#2106#0" expanded="true" />
+            <element signature="e#2140#2141#0" expanded="true" />
+            <element signature="e#2964#2965#0" expanded="true" />
+            <element signature="e#3015#3016#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/xplorSUI/ui/pdbFileChooser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/pdbFileChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
+        <state relative-caret-position="564">
+          <caret line="206" column="55" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
-            <element signature="e#1273#1274#0" expanded="true" />
-            <element signature="method#intPreviewer#0;class#pdbFileChooser#0" expanded="false" />
-            <element signature="e#5915#5916#0" expanded="true" />
-            <element signature="e#5953#5954#0" expanded="true" />
-            <element signature="e#6084#6085#0" expanded="true" />
-            <element signature="e#6126#6127#0" expanded="true" />
-            <element signature="e#6338#6339#0" expanded="true" />
-            <element signature="e#6380#6381#0" expanded="true" />
-            <element signature="e#6545#6546#0" expanded="true" />
-            <element signature="e#6587#6588#0" expanded="true" />
-            <element signature="initializer##0;class#pdbFileChooser#0" expanded="true" />
-            <element signature="initializer##0;class#pdbFileChooser#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setPdbFiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="83" column="49" selection-start-line="83" selection-start-column="49" selection-end-line="83" selection-end-column="49" />
+          <folding>
+            <element signature="e#965#966#0" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1177#1178#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
+            <element signature="e#1596#1597#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="initializer##0;class#setPdbFiles#0" expanded="true" />
+            <element signature="initializer##0;class#setPdbFiles#0" expanded="true" />
+            <element signature="e#9561#9562#0" expanded="true" />
+            <element signature="e#9595#9596#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1359,6 +1399,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1378,11 +1419,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>libs</last-edited>
+          <last-edited>sqlite-jdbc-3.8.11.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.345977" />
               </list>
             </option>
           </splitter-proportions>

@@ -1,4 +1,4 @@
-package org.liukan.xplorSUI.scriptRes;
+package org.liukan.DynaXL.scriptRes;
 
 /**
  * Created by liuk on 2016/6/24.
@@ -11,7 +11,7 @@ import java.io.*;
 import freemarker.template.*;
 
 import org.apache.commons.io.FileUtils;
-import org.liukan.xplorSUI.db.thePath;
+import org.liukan.DynaXL.db.thePath;
 
 import javax.swing.*;
 
@@ -31,11 +31,14 @@ public class scriptRes
     public ArrayList<String> linkRs;
     public ArrayList<breakResid> breakResids;
 
-    public void init() throws Exception
+    public void init(String WorkSpace) throws Exception
     {
         cfg = new Configuration();
         tempDir=thePath.getPath()+File.separator+"templates";
-        outDir=thePath.getPath()+File.separator+"out"+File.separator;
+        if(WorkSpace!=null)
+            outDir=WorkSpace;
+        else
+            outDir=thePath.getPath()+File.separator+"out"+File.separator;
         cfg.setDirectoryForTemplateLoading(new File(tempDir));
         //FileTemplateLoader ftl1= new FileTemplateLoader(new File(tempDir));
         //MultiTemplateLoader mtl = new MultiTemplateLoader(new TemplateLoader[] { ftl1});
@@ -87,7 +90,7 @@ public class scriptRes
     public static void main(String[] args)throws Exception
     {
         scriptRes hf = new scriptRes();
-        hf.init();
+        hf.init(null);
         hf.process();
     }
 }

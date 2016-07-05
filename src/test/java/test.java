@@ -1,12 +1,10 @@
 import org.biojava.nbio.structure.Atom;
-import org.biojava.nbio.structure.Chain;
 import org.biojava.nbio.structure.Structure;
 import org.biojava.nbio.structure.StructureTools;
 import org.biojava.nbio.structure.io.PDBFileParser;
-import org.liukan.xplorSUI.db.thePath;
+import org.liukan.DynaXL.db.thePath;
 
 import java.io.*;
-import java.util.List;
 
 
 /**
