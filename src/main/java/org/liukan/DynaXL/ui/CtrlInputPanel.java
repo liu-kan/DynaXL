@@ -1,7 +1,11 @@
 package org.liukan.DynaXL.ui;
 
 import org.liukan.DynaXL.db.thePath;
+import org.liukan.DynaXL.io.PdbWrapper;
+import org.liukan.DynaXL.io.mFiles;
+import org.liukan.DynaXL.io.rwPDB;
 import org.liukan.mgraph.mgraphx;
+import org.liukan.mgraph.mgraphxEx;
 import org.liukan.mgraph.util.dbIO;
 import org.liukan.DynaXL.crossLinkingGen;
 import org.liukan.DynaXL.db.dbIO2;
@@ -11,7 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Created by liuk on 2016/6/22.
@@ -19,24 +23,31 @@ import java.util.ArrayList;
 public class CtrlInputPanel {
     private final dbIO dbio;
     private final dbIO2 dbio2;
+    private editEdgeDB editEdgeDlg;
+
     private JButton a7ExecuteInXplorButton;
     private JButton generateScriptButton;
     private JButton saveCrossLinksModeButton;
-    private mgraphx mg;
+    private mgraphxEx mg;
     private ArrayList<String> domainDef;
     private String WorkSpaceDir = null;
     private String XplorPath;
     private setPdbFiles setpdbfiles;
+    private TreeMap<String, String> linkermap;
+    private mFiles mf;
 
-    public CtrlInputPanel(mgraphx _mg, dbIO _dbio, dbIO2 _dbio2) {
+    public CtrlInputPanel(mgraphxEx _mg, dbIO _dbio, dbIO2 _dbio2, editEdgeDB ee) {
         mg = _mg;
         dbio = _dbio;
+        this.editEdgeDlg = ee;
+        mf = null;
         dbio2 = _dbio2;
         modeTab.setSelectedIndex(1);
         domainDef = new ArrayList<>();
         WorkSpaceDir = dbio2.readVar("workSpaceDir");
+        mg.setEnabled(false);
         if (WorkSpaceDir == null) {
-            WorkSpaceDir = thePath.getPath() + File.pathSeparator + "workSpace" + File.pathSeparator;
+            WorkSpaceDir = thePath.getPath() + File.separator + "workSpace" + File.separator;
         }
         readCrossLinksModeButton.addActionListener(new ActionListener() {
             @Override
@@ -44,7 +55,7 @@ public class CtrlInputPanel {
                 int gid = 2;
                 try {
 
-                    mg.readGfromDB(dbio, gid);
+                    mg.gpanel.readGfromDB(dbio, gid);
 
                 } catch (Exception e2) {
                     System.err.println(e2.getClass().getName() + ": " + e2.getMessage());
@@ -60,7 +71,7 @@ public class CtrlInputPanel {
             public void actionPerformed(ActionEvent e) {
                 int gid = -1;
                 try {
-                    gid = mg.saveG2DB("hoho", 2, dbio);
+                    gid = mg.gpanel.saveG2DB("hoho", 2, dbio);
 
                 } catch (Exception e2) {
                     System.err.println(e2.getClass().getName() + ": " + e2.getMessage());
@@ -73,6 +84,8 @@ public class CtrlInputPanel {
         generateScriptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (mf == null)
+                    JOptionPane.showMessageDialog(panel, "Please follow the index order of buttons");
                 domainDef.clear();
                 String s = textRigid.getText().trim();
                 String s1 = textFlex.getText().trim();
@@ -82,7 +95,8 @@ public class CtrlInputPanel {
                 }
                 domainDef.add(s);
                 domainDef.add(s1);
-                crossLinkingGen gen = new crossLinkingGen(mg.saveG2graphStru("", 0), domainDef, WorkSpaceDir);
+                crossLinkingGen gen = new crossLinkingGen(mg.gpanel.saveG2graphStru("", 0), domainDef, WorkSpaceDir);
+                gen.setLinkersMap(mf.linkermap);
                 gen.genSricpt();
             }
         });
@@ -91,7 +105,7 @@ public class CtrlInputPanel {
             public void actionPerformed(ActionEvent e) {
                 WorkSpaceDir = dbio2.readVar("workSpaceDir");
                 if (WorkSpaceDir == null)
-                    WorkSpaceDir = thePath.getPath() + File.pathSeparator + "workSpace" + File.pathSeparator;
+                    WorkSpaceDir = thePath.getPath() + File.separator + "workSpace" + File.separator;
                 XplorPath = dbio2.readVar("xplorPath");
                 if (XplorPath == null)
                     XplorPath = "/usr/local/bin/xplor";
@@ -108,14 +122,20 @@ public class CtrlInputPanel {
         a2ChoosePDBFilesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setpdbfiles=new setPdbFiles(WorkSpaceDir);
+                setpdbfiles = new setPdbFiles(WorkSpaceDir);
                 setpdbfiles.showCenter();
-                if(setpdbfiles.ok){
-                    proteinpdbpath=setpdbfiles.proteinPdbPath;
-                    int s=setpdbfiles.linkersModel.getSize();
-                    for(int i=0;i<s;i++){
+                if (setpdbfiles.ok) {
+                    mf = new mFiles(WorkSpaceDir);
+                    mf.preparePdbFiles(setpdbfiles.proteinPdbPath, setpdbfiles.linkersModel);
+                    ArrayList<String> sl = new ArrayList<String>();
+                    int size = setpdbfiles.linkersModel.getSize();
+                    for (int i = 0; i < size; i++) {
+                        Map<String, String> m = setpdbfiles.linkersModel.getElementAt(i).getData().getResMap();
+                        sl.addAll(m.keySet());
 
                     }
+                    editEdgeDlg.setLinkersName(sl);
+                    mg.gpanel.setEnabled(true);
                 }
             }
         });

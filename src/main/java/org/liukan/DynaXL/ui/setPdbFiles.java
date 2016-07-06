@@ -7,37 +7,41 @@ import org.liukan.DynaXL.io.rwPDB;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class setPdbFiles extends JDialog {
     private setPdbFiles me;
-    public DefaultListModel linkersModel;
+    public DefaultListModel<PdbWrapper> linkersModel;
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JList listCrossliners;
+    private JList<PdbWrapper> listCrossliners;
     private JButton btnAddCL;
     private JButton delCrosslinkerButton;
     private JTextArea textAreaProtein;
     private JButton chooseProteinPdbButton;
-    private String ws;
+    private String ws, tws;
     public boolean ok;
     public String proteinPdbPath;
 
     public setPdbFiles(String ws) {
         setContentPane(contentPane);
         setModal(true);
-        ok=false;
-        proteinPdbPath=null;
+        ok = false;
+        proteinPdbPath = null;
         this.ws = ws;
+        this.tws = ws;
         me = this;
         delCrosslinkerButton.setEnabled(false);
-        DefaultListModel linkersModel = new DefaultListModel();
+        linkersModel = new DefaultListModel<PdbWrapper>();
         listCrossliners.setModel(linkersModel);
         getRootPane().setDefaultButton(buttonOK);
         setTitle("Setup pdf files for crosslinker and protein");
         listCrossliners.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        listCrossliners.setCellRenderer(new PdbWrapperRenderer());
+        listCrossliners.setCellRenderer(new PdbWrapperRenderer(120));
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -68,10 +72,13 @@ public class setPdbFiles extends JDialog {
         btnAddCL.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pdbFileChooser pdbfc = new pdbFileChooser(ws);
+                pdbFileChooser pdbfc = new pdbFileChooser(tws);
                 pdbfc.showCenter();
                 String p = pdbfc.choosedPath;
+                rwPDB pdb = new rwPDB(p);
+                pdb.getRes();
                 int s = linkersModel.getSize();
+                //System.out.println(s);
                 for (int i = 0; i < s; i++) {
                     PdbWrapper pdbw = (PdbWrapper) linkersModel.getElementAt(i);
                     if (pdbw.getName().equals(p)) {
@@ -80,8 +87,8 @@ public class setPdbFiles extends JDialog {
                     }
                 }
                 if (pdbfc.ok && p != null) {
-                    rwPDB pdb = new rwPDB(p);
-                    pdb.getRes();
+                    tws = p.substring(0, p.lastIndexOf(File.separator) + 1);
+                    System.out.println(tws);
                     linkersModel.addElement(new PdbWrapper(p, pdb));
                     delCrosslinkerButton.setEnabled(true);
                 }
@@ -100,36 +107,38 @@ public class setPdbFiles extends JDialog {
         chooseProteinPdbButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pdbFileChooser pdbfc = new pdbFileChooser(ws);
+                pdbFileChooser pdbfc = new pdbFileChooser(tws);
                 pdbfc.showCenter();
                 String p = pdbfc.choosedPath;
-                if (pdbfc.ok && p != null)
+                if (pdbfc.ok && p != null) {
+                    tws = p.substring(0, p.lastIndexOf(File.separator) + 1);
+                    System.out.println(tws);
                     textAreaProtein.setText(p);
+                }
             }
         });
     }
 
     private void onOK() {
-// add your code here
-        if(linkersModel.getSize()<1||textAreaProtein.getText().length()<2) {
+        if (linkersModel.getSize() < 1 || textAreaProtein.getText().length() < 2) {
             JOptionPane.showMessageDialog(me, "Please set crosslinkers and protein pdb first! or Press Cancel");
             return;
         }
-        proteinPdbPath=textAreaProtein.getText();
-        ok=true;
+        proteinPdbPath = textAreaProtein.getText();
+        ok = true;
         dispose();
     }
 
     private void onCancel() {
-// add your code here if necessary
-        proteinPdbPath=null;
-        linkersModel.removeAllElements();
-        ok=false;
+        proteinPdbPath = null;
+        linkersModel.clear();
+        ok = false;
         dispose();
     }
 
     public void showCenter() {
         pack();
+        //setPreferredSize(new Dimension(420, 300));
         final Toolkit toolkit = Toolkit.getDefaultToolkit();
         final Dimension screenSize = toolkit.getScreenSize();
         final int x = (screenSize.width - getWidth()) / 2;
@@ -177,10 +186,10 @@ public class setPdbFiles extends JDialog {
         panel2.add(buttonCancel, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel3 = new JPanel();
         panel3.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
-        contentPane.add(panel3, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(-1, 200), null, 0, false));
+        contentPane.add(panel3, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, new Dimension(-1, 200), new Dimension(450, 260), null, 0, false));
         final JPanel panel4 = new JPanel();
         panel4.setLayout(new BorderLayout(0, 0));
-        panel3.add(panel4, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel3.add(panel4, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, new Dimension(330, 100), new Dimension(350, -1), null, 0, false));
         listCrossliners = new JList();
         panel4.add(listCrossliners, BorderLayout.CENTER);
         final JPanel panel5 = new JPanel();
@@ -194,7 +203,7 @@ public class setPdbFiles extends JDialog {
         panel5.add(delCrosslinkerButton, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel6 = new JPanel();
         panel6.setLayout(new BorderLayout(0, 0));
-        panel3.add(panel6, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel3.add(panel6, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, new Dimension(180, -1), new Dimension(180, -1), null, 0, false));
         textAreaProtein = new JTextArea();
         textAreaProtein.setLineWrap(true);
         panel6.add(textAreaProtein, BorderLayout.CENTER);

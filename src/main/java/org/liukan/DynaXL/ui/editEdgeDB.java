@@ -5,8 +5,13 @@ import org.liukan.mgraph.ui.absEditEdge;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 public class editEdgeDB extends absEditEdge {
+    private DefaultComboBoxModel defaultComboBoxModel;
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -18,6 +23,8 @@ public class editEdgeDB extends absEditEdge {
     public editEdgeDB() {
         setContentPane(contentPane);
         setModal(true);
+        defaultComboBoxModel = new DefaultComboBoxModel();
+        chooseTheFixResidueComboBox.setModel(defaultComboBoxModel);
         getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(new ActionListener() {
@@ -46,6 +53,14 @@ public class editEdgeDB extends absEditEdge {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    }
+
+    public void setLinkersName(ArrayList<String> sl) {
+        if (sl.size() > 0) {
+            defaultComboBoxModel.removeAllElements();
+            for (String s : sl)
+                defaultComboBoxModel.addElement(s);
+        }
     }
 
     private void onOK() {
@@ -146,10 +161,8 @@ public class editEdgeDB extends absEditEdge {
         label2.setText("Choose the crosslinker");
         panel4.add(label2, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         chooseTheFixResidueComboBox = new JComboBox();
-        chooseTheFixResidueComboBox.setEditable(true);
+        chooseTheFixResidueComboBox.setEditable(false);
         final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
-        defaultComboBoxModel1.addElement("BS2G");
-        defaultComboBoxModel1.addElement("BS3");
         chooseTheFixResidueComboBox.setModel(defaultComboBoxModel1);
         panel4.add(chooseTheFixResidueComboBox, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         label1.setLabelFor(chooseTheFixResidueComboBox);

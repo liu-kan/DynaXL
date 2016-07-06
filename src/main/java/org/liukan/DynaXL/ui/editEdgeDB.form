@@ -108,11 +108,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <editable value="true"/>
-                  <model>
-                    <item value="BS2G"/>
-                    <item value="BS3"/>
-                  </model>
+                  <editable value="false"/>
+                  <model/>
                 </properties>
               </component>
             </children>

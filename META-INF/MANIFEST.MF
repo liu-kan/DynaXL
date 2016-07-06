@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
+Class-Path: libs/biojava-alignment-4.2.0.jar libs/biojava-core-4.2.1.jar libs/biojava-phylo-4.2.0.jar libs/biojava-structure-4.2.0.jar libs/biojava-structure-gui-4.2.0.jar libs/commons-io-2.5.jar libs/forester-1.038.jar libs/freemarker.jar libs/jcolorbrewer-5.2.jar libs/jgrapht-core-0.9.1.jar libs/jmol-13.0.14.jar libs/log4j-api-2.5.jar libs/log4j-core-2.5.jar libs/log4j-slf4j-impl-2.5.jar libs/mgraphEx.jar libs/miglayout-4.0.jar libs/miglayout-4.0-ideutil.jar libs/miglayout-4.0-swing.jar libs/slf4j-api-1.7.14.jar libs/sqlite-jdbc-3.8.11.2.jar libs/vecmath-1.3.1.jar
 Main-Class: org.liukan.DynaXL.crossLinkingUI
 

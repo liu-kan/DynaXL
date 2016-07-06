@@ -1,0 +1,43 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="DynaXL">
+    <output-path>$PROJECT_DIR$/out/artifacts/DynaXL</output-path>
+    <root id="root">
+      <element id="directory" name="libs">
+        <element id="library" level="project" name="libs" />
+        <element id="library" level="project" name="Maven: java3d:vecmath:1.3.1" />
+        <element id="library" level="project" name="Maven: javaws:javaws:1.0" />
+        <element id="library" level="project" name="Maven: net.sourceforge.jmol:jmol:13.0.14" />
+        <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.5" />
+        <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.5" />
+        <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.5" />
+        <element id="library" level="project" name="Maven: org.biojava.thirdparty:forester:1.038" />
+        <element id="library" level="project" name="Maven: org.biojava:biojava-alignment:4.2.0" />
+        <element id="library" level="project" name="Maven: org.biojava:biojava-core:4.2.1" />
+        <element id="library" level="project" name="Maven: org.biojava:biojava-phylo:4.2.0" />
+        <element id="library" level="project" name="Maven: org.biojava:biojava-structure-gui:4.2.0" />
+        <element id="library" level="project" name="Maven: org.biojava:biojava-structure:4.2.0" />
+        <element id="library" level="project" name="Maven: org.biojava:jcolorbrewer:5.2" />
+        <element id="library" level="project" name="Maven: org.jgrapht:jgrapht-core:0.9.1" />
+        <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.14" />
+      </element>
+      <element id="directory" name="db">
+        <element id="file-copy" path="$PROJECT_DIR$/db/db.sqlite" />
+      </element>
+      <element id="directory" name="templates">
+        <element id="dir-copy" path="$PROJECT_DIR$/templates" />
+      </element>
+      <element id="archive" name="DynaXL.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="xplor-sui" />
+      </element>
+      <element id="directory" name="workSpace">
+        <element id="file-copy" path="$PROJECT_DIR$/db/BS3_1.pdb" />
+        <element id="file-copy" path="$PROJECT_DIR$/db/BS2_84.pdb" />
+        <element id="file-copy" path="$PROJECT_DIR$/db/3eza_AH.pdb" />
+        <element id="file-copy" path="$PROJECT_DIR$/db/rand_1d1d_95.pdb" />
+      </element>
+    </root>
+  </artifact>
+</component>

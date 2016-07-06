@@ -78,9 +78,12 @@ public class rwPDB {
         return line.substring(22,26);
     }
     boolean saveFile(){
+        return saveFile(path);
+    }
+    boolean saveFile(String pdbpath){
 
         try {
-            FileWriter writer = new FileWriter(path);
+            FileWriter writer = new FileWriter(pdbpath);
             for(String str: pdbLines) {
                 writer.write(str+"\n");
             }
@@ -92,6 +95,8 @@ public class rwPDB {
         return true;
     }
     public Map<String, String> getResMap(){
+        if(resMap.size()<1)
+            getRes();
         return resMap;
     }
     public static void main(String[] args){

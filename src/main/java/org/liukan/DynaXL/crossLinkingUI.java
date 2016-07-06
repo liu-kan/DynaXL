@@ -35,7 +35,7 @@ public class crossLinkingUI {
         mgraphxEx c=new mgraphxEx(cl,ee);
         c.gpanel.setupGraphStyle(25,32,2,false);
         JPanel p;
-        p = new CtrlInputPanel(c.gpanel,dbio,dbio2).panel;
+        p = new CtrlInputPanel(c,dbio,dbio2,ee).panel;
         frame.getContentPane().add(c,BorderLayout.CENTER);
         frame.getContentPane().add(p,BorderLayout.EAST);
 

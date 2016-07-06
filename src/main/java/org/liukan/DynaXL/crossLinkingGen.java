@@ -14,6 +14,7 @@ import java.util.*;
 public class crossLinkingGen {
     private final graphStru gs;
     private final scriptRes scripts;
+    private TreeMap<String, String> crossLinkerMap;
     private  String segidPrefix;
     /**
      * Map<mnode,String> procedNodes(node,segid)
@@ -108,7 +109,8 @@ public class crossLinkingGen {
             medge e = gs.edges.get(j);
             if (e.id.length() < 1)
                 continue;
-            rv=genNewLinkResid(e.id);
+            //rv=genNewLinkResid(e.id);
+            rv=getResid(e.label);
             System.out.println(segID.get(e.id)+","+rv+","+gs.getNode(e.source).label);
             scripts.segidAndResidAndFixOfLinks.add(new segidAndResidAndFixOfLink(segID.get(e.id),rv,
                     gs.getNode(e.source).label,gs.getNode(e.target).label,segIDofLinks0.get(e.label)));
@@ -147,8 +149,13 @@ public class crossLinkingGen {
         }
         return rv;
     }
-
-
+    public void setLinkersMap(Map m){
+        crossLinkerMap=new TreeMap<String,String>();
+        crossLinkerMap.putAll(m);
+    }
+    private String getResid(String ResName){
+        return  crossLinkerMap.get(ResName).trim();
+    }
     private String genNewLinkResid(String linkid){
         String rv=Integer.toString(500+Integer.parseInt(linkid));
         linkResid.put(linkid,rv);
