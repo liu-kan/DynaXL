@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/libs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/miglayout-4.0-ideutil"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.biojava:biojava-core:4.2.1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.slf4j:slf4j-api:1.7.14"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.5"/>
@@ -20,6 +21,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: javaws:javaws:1.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: net.sourceforge.jmol:jmol:13.0.14"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.biojava:jcolorbrewer:5.2"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/miglayout-4.0-ideutil"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -26,6 +26,7 @@ public class CtrlInputPanel {
     private ArrayList<String> domainDef;
     private String WorkSpaceDir = null;
     private String XplorPath;
+    private setPdbFiles setpdbfiles;
 
     public CtrlInputPanel(mgraphx _mg, dbIO _dbio, dbIO2 _dbio2) {
         mg = _mg;
@@ -107,7 +108,15 @@ public class CtrlInputPanel {
         a2ChoosePDBFilesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                setpdbfiles=new setPdbFiles(WorkSpaceDir);
+                setpdbfiles.showCenter();
+                if(setpdbfiles.ok){
+                    proteinpdbpath=setpdbfiles.proteinPdbPath;
+                    int s=setpdbfiles.linkersModel.getSize();
+                    for(int i=0;i<s;i++){
 
+                    }
+                }
             }
         });
     }

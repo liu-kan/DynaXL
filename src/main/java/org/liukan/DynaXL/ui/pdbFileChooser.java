@@ -26,7 +26,8 @@ public class pdbFileChooser extends JDialog {
     private JFileChooser fileChooser;
     private JmolSimpleViewer viewer;
     private String previewPath;
-    private String choosedPath;
+    public String choosedPath;
+    public boolean ok;
 
     public String getPdbPath() {
         return choosedPath;
@@ -136,6 +137,7 @@ public class pdbFileChooser extends JDialog {
 
     public pdbFileChooser(String pdbDir) {
         this.pdbDir = pdbDir;
+        ok = false;
         setContentPane(contentPane);
         setModal(true);
         choosedPath = null;
@@ -181,10 +183,11 @@ public class pdbFileChooser extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        pack();
+
     }
 
     public void showCenter() {
+        pack();
         final Toolkit toolkit = Toolkit.getDefaultToolkit();
         final Dimension screenSize = toolkit.getScreenSize();
         final int x = (screenSize.width - getWidth()) / 2;
@@ -195,10 +198,12 @@ public class pdbFileChooser extends JDialog {
 
     private void onOK() {
         choosedPath = previewPath;
+        ok = true;
         dispose();
     }
 
     private void onCancel() {
+        ok = false;
         choosedPath = null;
         dispose();
     }

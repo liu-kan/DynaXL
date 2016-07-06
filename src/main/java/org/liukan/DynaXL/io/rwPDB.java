@@ -13,6 +13,13 @@ import java.util.TreeMap;
  */
 public class rwPDB {
     private String path=null;
+
+    public int getMaxResSeq() {
+        if(maxResSeq==0)
+            getRes();
+        return maxResSeq;
+    }
+
     int maxResSeq;
     public ArrayList<String> pdbLines;
     public Map<String, String> resMap;
@@ -83,6 +90,9 @@ public class rwPDB {
             return false;
         }
         return true;
+    }
+    public Map<String, String> getResMap(){
+        return resMap;
     }
     public static void main(String[] args){
         String pdbDir= thePath.getPath()+ File.separator+"db"+ File.separator;
