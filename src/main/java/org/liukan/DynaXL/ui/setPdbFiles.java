@@ -1,5 +1,6 @@
 package org.liukan.DynaXL.ui;
 
+import org.liukan.DynaXL.db.thePath;
 import org.liukan.DynaXL.io.PdbWrapper;
 import org.liukan.DynaXL.io.PdbWrapperRenderer;
 import org.liukan.DynaXL.io.rwPDB;
@@ -35,6 +36,7 @@ public class setPdbFiles extends JDialog {
         this.tws = ws;
         me = this;
         delCrosslinkerButton.setEnabled(false);
+        btnAddCL.setEnabled(false);
         linkersModel = new DefaultListModel<PdbWrapper>();
         listCrossliners.setModel(linkersModel);
         getRootPane().setDefaultButton(buttonOK);
@@ -72,7 +74,8 @@ public class setPdbFiles extends JDialog {
         btnAddCL.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pdbFileChooser pdbfc = new pdbFileChooser(tws);
+                //pdbFileChooser pdbfc = new pdbFileChooser(tws);
+                pdbFileChooser pdbfc = new pdbFileChooser(ws);
                 pdbfc.showCenter();
                 String p = pdbfc.choosedPath;
                 rwPDB pdb = new rwPDB(p);
@@ -137,6 +140,8 @@ public class setPdbFiles extends JDialog {
     }
 
     public void showCenter() {
+        loadDefaultPDB(new String[]{"BS3", "BS2"});
+
         pack();
         //setPreferredSize(new Dimension(420, 300));
         final Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -145,6 +150,36 @@ public class setPdbFiles extends JDialog {
         final int y = (screenSize.height - getHeight()) / 2;
         setLocation(x, y);
         setVisible(true);
+
+    }
+
+    public boolean loadDefaultPDB(String[] pdbp) {
+        for (int fi = 0; fi < pdbp.length; fi++) {
+
+            if (pdbp[fi] == null)
+                return false;
+            else if (pdbp[fi].length() < 1)
+                return false;
+
+            String p = thePath.getPath() + File.separator + "db" + File.separator + pdbp[fi] + ".pdb";
+            //System.out.println(p + "loading###################");
+            rwPDB pdb = new rwPDB(p);
+            if (!pdb.getRes())
+                return false;
+            //System.out.println(p + "loaded###################");
+            int s = linkersModel.getSize();
+            //System.out.println(s);
+            for (int i = 0; i < s; i++) {
+                PdbWrapper pdbw = (PdbWrapper) linkersModel.getElementAt(i);
+                if (pdbw.getName().equals(p)) {
+                    System.out.println(p + " __ This PDB has added already!");
+                }
+            }
+            linkersModel.addElement(new PdbWrapper(p, pdb));
+            //delCrosslinkerButton.setEnabled(true);
+
+        }
+        return true;
     }
 
     public static void main(String[] args) {

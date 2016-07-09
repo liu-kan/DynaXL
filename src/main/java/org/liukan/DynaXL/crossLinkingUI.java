@@ -20,13 +20,15 @@ import java.util.Locale;
  */
 public class crossLinkingUI {
     private final dbIO2 dbio2;
+    private final String dbUrl2;
     String dbUrl;
     dbIO dbio;
 
     public crossLinkingUI() {
         dbUrl = thePath.getPath()+ File.separator+"db"+File.separator+"db.sqlite";
+        dbUrl2 = thePath.getPath()+ File.separator+"db"+File.separator+"db2.sqlite";
         dbio=new dbIO("org.sqlite.JDBC","jdbc:sqlite:"+dbUrl,null,null);
-        dbio2=new dbIO2("org.sqlite.JDBC","jdbc:sqlite:"+dbUrl,null,null);
+        dbio2=new dbIO2("org.sqlite.JDBC","jdbc:sqlite:"+dbUrl2,null,null);
         JFrame  frame = new JFrame("DynaXL");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -50,6 +52,7 @@ public class crossLinkingUI {
             {
                 System.out.println("Closing");
                 dbio.close();
+                dbio2.close();
                 e.getWindow().dispose();
             }
         });

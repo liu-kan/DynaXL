@@ -23,7 +23,7 @@ public class PdbWrapperRenderer extends DefaultListCellRenderer {
                                                   int index, boolean isSelected, boolean hasFocus) {
         if (value instanceof PdbWrapper) {
             PdbWrapper item=((PdbWrapper) value);
-            String s=item.getName()+", #Atom: "+item.getData().getMaxResSeq();
+            String s=item.getName()+", #Atom: "+item.getData().getMaxResSeq()+", ResName1: "+item.getData().getFirstResName();
             String text = HTML_1 + String.valueOf(width) + HTML_2 + s
                     + HTML_3;
             return super.getListCellRendererComponent(

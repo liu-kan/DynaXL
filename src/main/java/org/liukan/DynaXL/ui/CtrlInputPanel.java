@@ -123,7 +123,9 @@ public class CtrlInputPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setpdbfiles = new setPdbFiles(WorkSpaceDir);
+
                 setpdbfiles.showCenter();
+
                 if (setpdbfiles.ok) {
                     mf = new mFiles(WorkSpaceDir);
                     mf.preparePdbFiles(setpdbfiles.proteinPdbPath, setpdbfiles.linkersModel);
@@ -135,7 +137,7 @@ public class CtrlInputPanel {
 
                     }
                     editEdgeDlg.setLinkersName(sl);
-                    mg.gpanel.setEnabled(true);
+                    mg.setEnabled(true);
                 }
             }
         });

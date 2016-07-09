@@ -183,4 +183,17 @@ public class dbIO2 {
         }
         return true;
     }
+
+    public void close() {
+        try {
+            c.close();
+            System.out.println("DB closed");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("Have tried to close DB");
+        }
+    }
 }

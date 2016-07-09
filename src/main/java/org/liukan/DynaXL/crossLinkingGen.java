@@ -1,5 +1,6 @@
 package org.liukan.DynaXL;
 
+import org.liukan.DynaXL.io.rwPDB;
 import org.liukan.mgraph.graphStru;
 import org.liukan.mgraph.medge;
 import org.liukan.mgraph.mnode;
@@ -16,6 +17,7 @@ public class crossLinkingGen {
     private final scriptRes scripts;
     private TreeMap<String, String> crossLinkerMap;
     private  String segidPrefix;
+    private  ArrayList<IndexPair> domainIdx;
     /**
      * Map<mnode,String> procedNodes(node,segid)
      */
@@ -42,6 +44,8 @@ public class crossLinkingGen {
     private ArrayList<String> domainDef;
     private Map<String,String> segIDofLinks0;
     private String WorkSpace;
+    private int resSize;
+
     public static <T, E> Set<T> getKeysByValue(Map<T, E> map, E value) {
         Set<T> keys = new HashSet<T>();
         for (Map.Entry<T, E> entry : map.entrySet()) {
@@ -88,11 +92,10 @@ public class crossLinkingGen {
                 continue;
             //System.out.println(dupSegid(gs.getNode(e.source),gs.getNode(e.target))+","+gs.getNode(e.target).label);
             dupSegid(e);
-            scripts.linkFileNames.add(genLinkFileNames(e.label,e.id)) ;
+
+            //copyPdbFiles(e.label,filename);
             genSegIDofLinks(e);
         }
-
-
     }
     private String genSegIDofLinks(medge e){
         String rv=segIDofLinks0.get(e.label);
@@ -110,12 +113,44 @@ public class crossLinkingGen {
             if (e.id.length() < 1)
                 continue;
             //rv=genNewLinkResid(e.id);
-            rv=getResid(e.label);
+            rv=genNewLinkResidAndCopyPDB(e.label);
             System.out.println(segID.get(e.id)+","+rv+","+gs.getNode(e.source).label);
-            scripts.segidAndResidAndFixOfLinks.add(new segidAndResidAndFixOfLink(segID.get(e.id),rv,
-                    gs.getNode(e.source).label,gs.getNode(e.target).label,segIDofLinks0.get(e.label)));
+            int sourceid=Integer.parseInt(gs.getNode(e.source).label);
+            if(isAFixId(sourceid)==1){
+                scripts.segidAndResidAndFixOfLinks.add(new segidAndResidAndFixOfLink(segID.get(e.id),rv,
+                        gs.getNode(e.source).label,
+                        gs.getNode(e.target).label,
+                        segIDofLinks0.get(e.label)));
+            }else{
+                scripts.segidAndResidAndFixOfLinks.add(new segidAndResidAndFixOfLink(segID.get(e.id),rv,
+                        gs.getNode(e.target).label,gs.getNode(e.source).label,
+                        segIDofLinks0.get(e.label)));
+            }
+            String filename=genLinkFileNames(e.label,rv);
+            scripts.linkFileNames.add(filename);
         }
+    }
 
+    private int isAFixId(int sourceid) {
+        int idx=0,size=domainIdx.size();
+        boolean found=false;
+        for (;idx<size;idx++) {
+            if (sourceid <= domainIdx.get(idx).getIndex()) {
+                found=true;
+                break;
+            }
+        }
+        if(!found){
+            JOptionPane.showMessageDialog(null,"Define of domains or linkers may have errors!");
+            return -1;
+        }
+        if(idx==0)
+            return (domainIdx.get(idx).getWhich());
+        else{
+            int which=((sourceid-domainIdx.get(idx-1).getIndex())>(domainIdx.get(idx).getIndex()-sourceid)?
+                    domainIdx.get(idx).getWhich():domainIdx.get(idx-1).getWhich());
+            return which;
+        }
     }
 
     private String dupSegid(medge e) {
@@ -152,9 +187,23 @@ public class crossLinkingGen {
     public void setLinkersMap(Map m){
         crossLinkerMap=new TreeMap<String,String>();
         crossLinkerMap.putAll(m);
+        int tmax=-1;
+        for(String k:crossLinkerMap.keySet()){
+            int v=Integer.parseInt(crossLinkerMap.get(k).trim());
+            if(v>tmax)
+                tmax=v;
+        }
+        resSize=tmax+1;
     }
     private String getResid(String ResName){
         return  crossLinkerMap.get(ResName).trim();
+    }
+    private String genNewLinkResidAndCopyPDB(String ResName){
+        resSize++;
+        rwPDB lpdb=new rwPDB(WorkSpace+ResName+".pdb");
+        lpdb.setResSeq(ResName,Integer.toString(resSize));
+        lpdb.saveFile(WorkSpace+ResName+"_"+resSize+".pdb");
+        return Integer.toString(resSize);
     }
     private String genNewLinkResid(String linkid){
         String rv=Integer.toString(500+Integer.parseInt(linkid));
@@ -209,27 +258,27 @@ public class crossLinkingGen {
         segID.put(n,segid);
         return segid;
     }
-
-
     public void genSricpt() {
+        if(domainsAndLinks()!=true) {
+            JOptionPane.showMessageDialog(null,"Define of domains or linkers may have errors!");
+            return;
+        }
         genSegid();
         crossLinkResid();
-        if(domainsAndLinks()!=true)
-            return;
         try {
             scripts.process();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     private boolean domainsAndLinks() {
         List<Integer> fixIdx =  new ArrayList<Integer>();
         List<Integer> fexIdx =  new ArrayList<Integer>();
+        domainIdx =  new ArrayList<IndexPair>();
 
         String textRigid = domainDef.get(0);
         String[] rigids=textRigid.split("#");
-        if(rigids.length>2) {
+        if(rigids.length!=2) {
             JOptionPane.showMessageDialog(null, "Dyn.fix and Dyn.group must be separated by #");
             return false;
         }
@@ -239,6 +288,7 @@ public class crossLinkingGen {
         String[] dyngrp=dyngrps.split(",");
         for(String i:dynfix){
             scripts.dynFixs.add(i);
+            //System.out.println(i);
             String fix[]=i.split(":");
             if(fix.length!=2){
                 JOptionPane.showMessageDialog(null, "A single Dyn.fix must be defined like 1:19!");
@@ -246,10 +296,20 @@ public class crossLinkingGen {
             }
             fixIdx.add(Integer.parseInt(fix[0]));
             fixIdx.add(Integer.parseInt(fix[1]));
+            domainIdx.add(new IndexPair(Integer.parseInt(fix[0]),1));
+            domainIdx.add(new IndexPair(Integer.parseInt(fix[1]),1));
         }
         for(String i:dyngrp){
             scripts.dynGroups.add(i);
+            String dyn[]=i.split(":");
+            if(dyn.length!=2){
+                JOptionPane.showMessageDialog(null, "A single Dyn.dyn must be defined like 1:19!");
+                return false;
+            }
+            domainIdx.add(new IndexPair(Integer.parseInt(dyn[0]),0));
+            domainIdx.add(new IndexPair(Integer.parseInt(dyn[1]),0));
         }
+        domainIdx.sort(Comparator.comparing(IndexPair::getIndex));
 
         String textFlex = domainDef.get(1).trim();
         String[] links=textFlex.split(",");

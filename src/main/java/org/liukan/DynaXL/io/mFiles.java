@@ -14,6 +14,8 @@ public class mFiles {
     private String workSpacePath;
     private String proteinPath;
     private ArrayList<String> crosslinkersPath;
+    public int resSize;
+
     public mFiles(String ws){
         workSpacePath=ws;
     }
@@ -25,10 +27,12 @@ public class mFiles {
         boolean adjLinersResSeq=false;
         int s=linkersModel.getSize();
         linkermap=new TreeMap<String, String>();
+        resSize=0;
         for(int i=0;i<s;i++){
             PdbWrapper pdbw=(PdbWrapper)linkersModel.getElementAt(i);
             Map<String, String> m = pdbw.getData().getResMap();
             for(String k:m.keySet()){
+                resSize++;
                 if(linkermap.get(k)!=null&&linkermap.get(k)!=m.get(k))
                     adjLinersResSeq=true;
             }
@@ -59,11 +63,10 @@ public class mFiles {
         for(int i=0;i<s;i++){
             PdbWrapper pdbw=(PdbWrapper)linkersModel.getElementAt(i);
             rwPDB lpdb=pdbw.getData();
-            String cp=pdbw.getName();
-            int tt=cp.lastIndexOf(File.separator);
-            String clp=cp.substring(tt+1);
-            lpdb.saveFile(workSpacePath+clp);
-            crosslinkersPath.add(workSpacePath+clp);
+            Map<String, String> m = lpdb.getResMap();
+            String cp=m.keySet().toArray(new String[m.size()])[0];
+            lpdb.saveFile(workSpacePath+cp+".pdb");
+            crosslinkersPath.add(workSpacePath+cp+".pdb");
         }
     }
 }

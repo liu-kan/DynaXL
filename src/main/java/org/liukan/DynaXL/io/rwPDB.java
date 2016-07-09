@@ -12,6 +12,7 @@ import java.util.TreeMap;
  * Created by liuk on 2016/7/2.
  */
 public class rwPDB {
+    private boolean falseLoad;
     private String path=null;
 
     public int getMaxResSeq() {
@@ -25,6 +26,7 @@ public class rwPDB {
     public Map<String, String> resMap;
     public rwPDB(String path){
         maxResSeq=0;
+        falseLoad=false;
         this.path=path;
         pdbLines=new ArrayList<>();
         resMap = new TreeMap<String, String>();
@@ -39,11 +41,14 @@ public class rwPDB {
                     pdbLines.add(line);
             }
         }catch (Exception e){
+            falseLoad=true;
             System.out.println(e);
         }
     }
 
-    public void getRes(){
+    public boolean getRes(){
+        if(falseLoad)
+            return false;
         for(String line:pdbLines){
             if(line.startsWith("ATOM ")) {
                 String rsq=getResSeq(line);
@@ -54,6 +59,7 @@ public class rwPDB {
                 }
             }
         }
+        return true;
     }
     public void setResSeq(String resName,String resSeq){
         int size=pdbLines.size();
@@ -77,10 +83,10 @@ public class rwPDB {
     String getResSeq(String line){
         return line.substring(22,26);
     }
-    boolean saveFile(){
+    public boolean saveFile(){
         return saveFile(path);
     }
-    boolean saveFile(String pdbpath){
+    public boolean saveFile(String pdbpath){
 
         try {
             FileWriter writer = new FileWriter(pdbpath);
@@ -94,6 +100,11 @@ public class rwPDB {
         }
         return true;
     }
+    public String getFirstResName(){
+        if(resMap.size()<1)
+            getRes();
+        return resMap.keySet().toArray(new String[resMap.size()])[0];
+    }
     public Map<String, String> getResMap(){
         if(resMap.size()<1)
             getRes();
@@ -102,7 +113,7 @@ public class rwPDB {
     public static void main(String[] args){
         String pdbDir= thePath.getPath()+ File.separator+"db"+ File.separator;
         //File file =new File(pdbDir+"3eza_AH.pdb");
-        rwPDB pdb = new rwPDB(pdbDir + "BS2_84.pdb");
+        rwPDB pdb = new rwPDB(pdbDir + "BS2.pdb");
         pdb.getRes();
         System.out.print(pdb.resMap);
         pdb.setResSeq("BS2","608");
