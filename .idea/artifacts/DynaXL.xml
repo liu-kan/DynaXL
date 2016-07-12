@@ -30,7 +30,7 @@
         <element id="directory" name="META-INF">
           <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
         </element>
-        <element id="module-output" name="xplor-sui" />
+        <element id="module-output" name="DynaXL" />
       </element>
       <element id="directory" name="workSpace">
         <element id="file-copy" path="$PROJECT_DIR$/db/BS3.pdb" />
