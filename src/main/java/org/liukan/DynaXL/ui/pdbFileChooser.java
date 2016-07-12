@@ -74,9 +74,9 @@ public class pdbFileChooser extends JDialog {
 
         // Jmol could also read the file directly from your file system`
         //viewer.openFile(pdbDir + "3eza_AH.pdb");
-        jmolPanel.evalString("select * ; color chain;");
-        jmolPanel.evalString("select *; spacefill off; wireframe off; backbone 0.4;  ");
-        jmolPanel.evalString("save STATE state_1");
+        //jmolPanel.evalString("select * ; color chain;");
+        //jmolPanel.evalString("select *; spacefill off; wireframe off; backbone 0.4;  ");
+        //jmolPanel.evalString("save STATE state_1");
 
         //jmolPanel.setSize(300, 300);
         jmolPanel.setPreferredSize(new Dimension(500, 500));

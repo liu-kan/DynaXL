@@ -15,6 +15,7 @@ public class mFiles {
     private String proteinPath;
     private ArrayList<String> crosslinkersPath;
     public int resSize;
+    private String proteinPsf;
 
     public mFiles(String ws){
         workSpacePath=ws;
@@ -22,7 +23,7 @@ public class mFiles {
     public void copyPdbFiles(){
 
     }
-    public void preparePdbFiles(String proteinPath,DefaultListModel linkersModel){
+    public void preparePdbFiles(String proteinPath,String proteinPsfPath, DefaultListModel linkersModel){
         crosslinkersPath=new ArrayList<>();
         boolean adjLinersResSeq=false;
         int s=linkersModel.getSize();
@@ -60,12 +61,14 @@ public class mFiles {
         String proteinp=proteinPath.substring(t+1);
         ppdb.saveFile(workSpacePath+proteinp);
         this.proteinPath=workSpacePath+proteinp;
+        this.proteinPsf=proteinPsfPath;
         for(int i=0;i<s;i++){
             PdbWrapper pdbw=(PdbWrapper)linkersModel.getElementAt(i);
             rwPDB lpdb=pdbw.getData();
             Map<String, String> m = lpdb.getResMap();
             String cp=m.keySet().toArray(new String[m.size()])[0];
             lpdb.saveFile(workSpacePath+cp+".pdb");
+            //TODO deal with crosslink psf
             crosslinkersPath.add(workSpacePath+cp+".pdb");
         }
     }

@@ -6,6 +6,7 @@ import org.liukan.DynaXL.io.PdbWrapperRenderer;
 import org.liukan.DynaXL.io.rwPDB;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -23,6 +24,8 @@ public class setPdbFiles extends JDialog {
     private JButton delCrosslinkerButton;
     private JTextArea textAreaProtein;
     private JButton chooseProteinPdbButton;
+    private JTextArea textAreaPSF;
+    private JButton chooseProteinPsfButton;
     private String ws, tws;
     public boolean ok;
     public String proteinPdbPath;
@@ -74,8 +77,8 @@ public class setPdbFiles extends JDialog {
         btnAddCL.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //pdbFileChooser pdbfc = new pdbFileChooser(tws);
-                pdbFileChooser pdbfc = new pdbFileChooser(ws);
+                pdbFileChooser pdbfc = new pdbFileChooser(tws);
+                //pdbFileChooser pdbfc = new pdbFileChooser(ws);
                 pdbfc.showCenter();
                 String p = pdbfc.choosedPath;
                 rwPDB pdb = new rwPDB(p);
@@ -117,6 +120,22 @@ public class setPdbFiles extends JDialog {
                     tws = p.substring(0, p.lastIndexOf(File.separator) + 1);
                     System.out.println(tws);
                     textAreaProtein.setText(p);
+                }
+            }
+        });
+        chooseProteinPsfButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fc = new JFileChooser(tws);
+                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "PSF File", "psf");
+                fc.setFileFilter(filter);
+
+                int returnVal = fc.showDialog(me, null);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    String p = fc.getSelectedFile().getAbsolutePath();
+                    textAreaPSF.setText(p);
                 }
             }
         });
@@ -220,7 +239,7 @@ public class setPdbFiles extends JDialog {
         buttonCancel.setText("Cancel");
         panel2.add(buttonCancel, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel3 = new JPanel();
-        panel3.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         contentPane.add(panel3, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, new Dimension(-1, 200), new Dimension(450, 260), null, 0, false));
         final JPanel panel4 = new JPanel();
         panel4.setLayout(new BorderLayout(0, 0));
@@ -245,6 +264,15 @@ public class setPdbFiles extends JDialog {
         chooseProteinPdbButton = new JButton();
         chooseProteinPdbButton.setText("Choose protein pdb");
         panel6.add(chooseProteinPdbButton, BorderLayout.SOUTH);
+        final JPanel panel7 = new JPanel();
+        panel7.setLayout(new BorderLayout(0, 0));
+        panel3.add(panel7, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        textAreaPSF = new JTextArea();
+        textAreaPSF.setLineWrap(true);
+        panel7.add(textAreaPSF, BorderLayout.CENTER);
+        chooseProteinPsfButton = new JButton();
+        chooseProteinPsfButton.setText("Choose protein psf");
+        panel7.add(chooseProteinPsfButton, BorderLayout.SOUTH);
     }
 
     /**

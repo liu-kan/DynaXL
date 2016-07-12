@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="DynaXL" />
         <module name="xplor-sui" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="DynaXL" target="1.8" />
       <module name="xplor-sui" target="1.8" />
     </bytecodeTargetLevel>
   </component>
