@@ -2,6 +2,7 @@ package org.liukan.DynaXL.ui;
 
 import net.miginfocom.swing.MigLayout;
 import org.liukan.DynaXL.db.thePath;
+import org.liukan.DynaXL.io.mFiles;
 
 import javax.swing.*;
 import java.awt.*;
@@ -84,8 +85,18 @@ public class setWorkDir extends JDialog {
         ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                isok=true;
-                dispose();
+                if(mFiles.fileCanExec(xplorpath.getText())) {
+                    isok = true;
+                    dispose();
+                }else {
+                    int r=JOptionPane.showConfirmDialog(me,"Please confirm that the xplor path is correct and executable!","confirm",JOptionPane.YES_NO_CANCEL_OPTION);
+                    if(r==JOptionPane.YES_OPTION){
+                        isok=true;
+                        dispose();
+                    }else if(r==JOptionPane.CANCEL_OPTION)
+                        dispose();
+
+                }
             }
         });
         panel.add(ok,"split 2,cell 2 2, align right");
@@ -106,6 +117,7 @@ public class setWorkDir extends JDialog {
     }
     public String getWorkSpaceDir(){
         if(isok) {
+            pdbDir=dir.getText();
             if(!pdbDir.endsWith(File.separator))
                 pdbDir=pdbDir+File.separator;
             return pdbDir;
@@ -114,8 +126,10 @@ public class setWorkDir extends JDialog {
             return null;
     }
     public String getXlporPath(){
-        if(isok)
+        if(isok) {
+            xlporPath=xplorpath.getText();
             return xlporPath;
+        }
         else
             return null;
     }

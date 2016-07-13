@@ -2,6 +2,9 @@ package org.liukan.DynaXL.io;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -21,6 +24,22 @@ public class mFiles {
         workSpacePath=ws;
     }
     public void copyPdbFiles(){
+
+    }
+    public static boolean fileCanExec(String p){
+        Path path = Paths.get(p);
+        try {
+            path=path.toRealPath();
+            File f=path.toFile();
+            if(f.exists()){
+                if(f.canExecute())
+                    return true;
+            }
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
 
     }
     public void preparePdbFiles(String proteinPath,String proteinPsfPath, DefaultListModel linkersModel){

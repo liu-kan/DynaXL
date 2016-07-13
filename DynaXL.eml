@@ -11,6 +11,8 @@
 	<levels>
 		<level name="libs" value="project"/>
 		<level name="miglayout-4.0-ideutil" value="project"/>
+		<level name="sqlite-jdbc-3.8.11.2" value="project"/>
+		<level name="mgraphEx" value="project"/>
 		<level name="Maven: org.biojava:biojava-core:4.2.1" value="project"/>
 		<level name="Maven: org.slf4j:slf4j-api:1.7.14" value="project"/>
 		<level name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.5" value="project"/>

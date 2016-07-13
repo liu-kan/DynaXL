@@ -6,6 +6,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/libs"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/miglayout-4.0-ideutil"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/sqlite-jdbc-3.8.11.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mgraphEx"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.biojava:biojava-core:4.2.1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.slf4j:slf4j-api:1.7.14"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.5"/>

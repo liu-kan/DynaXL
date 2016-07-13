@@ -29,6 +29,7 @@ public class setPdbFiles extends JDialog {
     private String ws, tws;
     public boolean ok;
     public String proteinPdbPath;
+    public String proteinPsfPath;
 
     public setPdbFiles(String ws) {
         setContentPane(contentPane);
@@ -147,6 +148,7 @@ public class setPdbFiles extends JDialog {
             return;
         }
         proteinPdbPath = textAreaProtein.getText();
+        proteinPsfPath = textAreaPSF.getText();
         ok = true;
         dispose();
     }

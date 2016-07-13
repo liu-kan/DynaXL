@@ -128,7 +128,7 @@ public class CtrlInputPanel {
 
                 if (setpdbfiles.ok) {
                     mf = new mFiles(WorkSpaceDir);
-                    mf.preparePdbFiles(setpdbfiles.proteinPdbPath, setpdbfiles.linkersModel);
+                    mf.preparePdbFiles(setpdbfiles.proteinPdbPath, setpdbfiles.proteinPsfPath, setpdbfiles.linkersModel);
                     ArrayList<String> sl = new ArrayList<String>();
                     int size = setpdbfiles.linkersModel.getSize();
                     for (int i = 0; i < size; i++) {
