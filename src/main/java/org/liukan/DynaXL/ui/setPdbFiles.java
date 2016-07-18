@@ -261,6 +261,7 @@ public class setPdbFiles extends JDialog {
         panel6.setLayout(new BorderLayout(0, 0));
         panel3.add(panel6, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, new Dimension(180, -1), new Dimension(180, -1), null, 0, false));
         textAreaProtein = new JTextArea();
+        textAreaProtein.setEditable(false);
         textAreaProtein.setLineWrap(true);
         panel6.add(textAreaProtein, BorderLayout.CENTER);
         chooseProteinPdbButton = new JButton();
@@ -270,6 +271,7 @@ public class setPdbFiles extends JDialog {
         panel7.setLayout(new BorderLayout(0, 0));
         panel3.add(panel7, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         textAreaPSF = new JTextArea();
+        textAreaPSF.setEditable(false);
         textAreaPSF.setLineWrap(true);
         panel7.add(textAreaPSF, BorderLayout.CENTER);
         chooseProteinPsfButton = new JButton();
