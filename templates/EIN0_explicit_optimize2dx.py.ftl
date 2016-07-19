@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 command = xplor.command
 from jCoupPot import JCoupPot
 from noePot import NOEPot
@@ -19,7 +20,7 @@ import monteCarlo
 
 protocol.initRandomSeed(997)
 
-protocol.initParams('../parallhdg_new.pro')
+protocol.initParams('./parallhdg_new.pro')
 
 protocol.initStruct('ein_explicit.psf')
 protocol.initCoords('Optimize_0516/camA_13.pdb')
@@ -91,7 +92,7 @@ if ensIndex==0:
 else:
    dyn.fix(""" segid " " and (resi 1:19 or resi 148:250) """) # allow 20 phi angle to reorient
    dyn.fix(""" segid " " and <#if dynFixs?size gt 1>(</#if>resi <#list dynFixs as dynFix>${dynFix} <#if dynFix_has_next>or resi</#if> </#list><#if dynFixs?size gt 1>)</#if> """) # allow 20 phi angle to reorient
-   #fix的部分是连接探针的部分
+
    dyn.group(""" segid " " and resi 24:142 """)
    dyn.group(""" segid " " and <#if dynGroups?size gt 1>(</#if>resi <#list dynGroups as dynGroup>${dynGroup} <#if dynGroup_has_next>or</#if> </#list><#if dynGroups?size gt 1>)</#if> """)
    pass
@@ -105,8 +106,7 @@ command("""
 </#list>
 
     inter = (segid " " and <#if dynFixs?size gt 1>(</#if>resi <#list dynFixs as dynFix>${dynFix} <#if dynFix_has_next>or resi</#if> </#list><#if dynFixs?size gt 1>)</#if>) (segid " " and <#if dynGroups?size gt 1>(</#if>resi <#list dynGroups as dynGroup>${dynGroup} <#if dynGroup_has_next>or</#if> </#list><#if dynGroups?size gt 1>)</#if>) # 刚性之间
-    inter = (segid " " and <#if linkRs?size gt 1>(</#if>resi <#list linkRs as linkR>${linkR} <#if linkR_has_next>or resi</#if> </#list><#if linkRs?size gt 1>)</#if>) (all) # 柔性区和所有
-
+    inter = (segid " " and <#if linkRs?size gt 1>(</#if>resi <#list linkRs as linkR>${linkR} <#if linkR_has_next>or resi</#if> </#list><#if linkRs?size gt 1>)</#if>) (all)
     weights * 1 end end
     """)
 ############################################################

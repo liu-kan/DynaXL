@@ -15,6 +15,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -49,6 +53,7 @@ public class CtrlInputPanel {
         if (WorkSpaceDir == null) {
             WorkSpaceDir = thePath.getPath() + File.separator + "workSpace" + File.separator;
         }
+        XplorPath = dbio2.readVar("xplorPath");
         readCrossLinksModeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,17 +101,19 @@ public class CtrlInputPanel {
                 domainDef.add(s);
                 domainDef.add(s1);
                 crossLinkingGen gen = new crossLinkingGen(mg.gpanel.saveG2graphStru("", 0), domainDef, WorkSpaceDir);
+                gen.setXplor(XplorPath);
                 gen.setLinkersMap(mf.linkermap);
+                gen.setPdbAndPsfOfProtein(mf.proteinPdb, mf.proteinPsf);
                 gen.genSricpt();
             }
         });
         a1ChooseAWorkButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                WorkSpaceDir = dbio2.readVar("workSpaceDir");
+                //WorkSpaceDir = dbio2.readVar("workSpaceDir");
                 if (WorkSpaceDir == null)
                     WorkSpaceDir = thePath.getPath() + File.separator + "workSpace" + File.separator;
-                XplorPath = dbio2.readVar("xplorPath");
+                //XplorPath = dbio2.readVar("xplorPath");
                 if (XplorPath == null)
                     XplorPath = "/usr/local/bin/xplor";
                 setWorkDir sws = new setWorkDir(WorkSpaceDir, XplorPath);
@@ -127,6 +134,14 @@ public class CtrlInputPanel {
                 setpdbfiles.showCenter();
 
                 if (setpdbfiles.ok) {
+                    Path path = FileSystems.getDefault().getPath("log");
+                    //delete if exists
+                    try {
+                        boolean success = Files.deleteIfExists(path);
+                        System.out.println("Delete status: " + success);
+                    } catch (IOException | SecurityException ex) {
+                        System.err.println(ex);
+                    }
                     mf = new mFiles(WorkSpaceDir);
                     mf.preparePdbFiles(setpdbfiles.proteinPdbPath, setpdbfiles.proteinPsfPath, setpdbfiles.linkersModel);
                     ArrayList<String> sl = new ArrayList<String>();
@@ -139,6 +154,47 @@ public class CtrlInputPanel {
                     editEdgeDlg.setLinkersName(sl);
                     mg.setEnabled(true);
                 }
+            }
+        });
+        a7ExecuteInXplorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Thread thread = new Thread() {
+                    public void run() {
+                        try {
+                            //Runtime.getRuntime().exec(XplorPath);
+                            ProcessBuilder pb =
+                                    new ProcessBuilder(XplorPath, "-in", "isop_patch3.inp");
+                            Map<String, String> env = pb.environment();
+                            pb.directory(new File(WorkSpaceDir));
+                            File log = new File("log");
+                            pb.redirectErrorStream(true);
+                            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
+                            Process p = pb.start();
+                            p.waitFor(); // Wait for the process to finish.
+
+                            pb = new ProcessBuilder(XplorPath, "-py", "EIN0_explicit_optimize2dx.py");
+
+                            pb.directory(new File(WorkSpaceDir));
+                            pb.redirectErrorStream(true);
+                            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
+                            p = pb.start();
+                            p.waitFor(); //
+                            System.out.println("executed successfully");
+                        }
+                        catch (IOException ex) {
+                            System.out.println(ex);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        xProgressBar.show((Frame) null, thread,
+                                "Calculating", "Calculated successfully!", "Cancel");
+                    }
+                });
             }
         });
     }
@@ -230,7 +286,7 @@ public class CtrlInputPanel {
         a1ChooseAWorkButton.setText("[1]. Choose a work directory");
         panel.add(a1ChooseAWorkButton, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label5 = new JLabel();
-        label5.setText("3. Draw the relationship diagram of cross link");
+        label5.setText("<html>3. Draw the relationship diagram of<br> cross link\n</html>");
         panel.add(label5, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 

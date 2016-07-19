@@ -15,6 +15,7 @@ import java.util.*;
 public class crossLinkingGen {
     private final graphStru gs;
     private final scriptRes scripts;
+
     private TreeMap<String, String> crossLinkerMap;
     private  String segidPrefix;
     private  ArrayList<IndexPair> domainIdx;
@@ -44,6 +45,7 @@ public class crossLinkingGen {
     private ArrayList<String> domainDef;
     private Map<String,String> segIDofLinks0;
     private String WorkSpace;
+    private String xplorPath;
     private int resSize;
 
     public static <T, E> Set<T> getKeysByValue(Map<T, E> map, E value) {
@@ -100,10 +102,19 @@ public class crossLinkingGen {
     private String genSegIDofLinks(medge e){
         String rv=segIDofLinks0.get(e.label);
         if(rv==null){
-            rv="C"+e.id;
+            if(e.label.equals("BS2"))
+                rv="C02";
+            else if(e.label.equals("BS3"))
+                rv="C03";
+            else
+                rv="C"+e.id;
             segIDofLinks0.put(e.label,rv);
         }
         return rv;
+    }
+    public void setPdbAndPsfOfProtein(String pdb,String psf){
+        scripts.ProteinPdb=pdb;
+        scripts.ProteinPsf=psf;
     }
     private void crossLinkResid() {
         int size = gs.edges.size();
@@ -203,6 +214,21 @@ public class crossLinkingGen {
         rwPDB lpdb=new rwPDB(WorkSpace+ResName+".pdb");
         lpdb.setResSeq(ResName,Integer.toString(resSize));
         lpdb.saveFile(WorkSpace+ResName+"_"+resSize+".pdb");
+        //TODO genpsf
+        crosslinkPsfGen clgen=new crosslinkPsfGen();
+        try {
+            clgen.init(WorkSpace,xplorPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        clgen.BSn=ResName+"_"+resSize;
+        clgen.BSt=ResName;
+        //System.out.println(clgen.BSn+"##"+clgen.BSt);
+        try {
+            clgen.process();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return Integer.toString(resSize);
     }
     private String genNewLinkResid(String linkid){
@@ -335,5 +361,10 @@ public class crossLinkingGen {
 
     private String genLinkFileNames(String linkName,String edgeid) {
         return linkName+"_"+edgeid;
+    }
+
+
+    public void setXplor(String xplor) {
+        xplorPath = xplor;
     }
 }

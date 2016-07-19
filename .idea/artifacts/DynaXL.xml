@@ -42,6 +42,14 @@
         <element id="file-copy" path="$PROJECT_DIR$/db/3eza_AH.pdb" />
         <element id="file-copy" path="$PROJECT_DIR$/db/rand_1d1d_95.pdb" />
       </element>
+      <element id="directory" name="res">
+        <element id="directory" name="icons">
+          <element id="file-copy" path="$PROJECT_DIR$/res/icons/icon128.png" />
+          <element id="file-copy" path="$PROJECT_DIR$/res/icons/icon16.png" />
+          <element id="file-copy" path="$PROJECT_DIR$/res/icons/icon32.png" />
+          <element id="file-copy" path="$PROJECT_DIR$/res/icons/icon64.png" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

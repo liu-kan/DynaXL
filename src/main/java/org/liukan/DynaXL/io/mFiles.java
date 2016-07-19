@@ -1,13 +1,18 @@
 package org.liukan.DynaXL.io;
 
+import org.liukan.DynaXL.db.thePath;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
+import static java.nio.file.StandardCopyOption.*;
 
 /**
  * Created by liuk on 2016/7/6.
@@ -15,16 +20,33 @@ import java.util.TreeMap;
 public class mFiles {
     public TreeMap<String, String> linkermap;
     private String workSpacePath;
-    private String proteinPath;
+    //private String proteinPath;
     private ArrayList<String> crosslinkersPath;
     public int resSize;
-    private String proteinPsf;
+    public String proteinPsf;
+    public String proteinPdb;
 
     public mFiles(String ws){
         workSpacePath=ws;
     }
-    public void copyPdbFiles(){
-
+    public void copyProFiles(){
+        copyFile(thePath.getPath()+File.separator+"db"+File.separator+"topallhdg_new.pro",workSpacePath+File.separator+"topallhdg_new.pro");
+        copyFile(thePath.getPath()+File.separator+"db"+File.separator+"parallhdg_new.pro",workSpacePath+File.separator+"parallhdg_new.pro");
+        copyFile(thePath.getPath()+File.separator+"db"+File.separator+"BS2.top",workSpacePath+File.separator+"BS2.top");
+        copyFile(thePath.getPath()+File.separator+"db"+File.separator+"BS3.top",workSpacePath+File.separator+"BS3.top");
+    }
+    private boolean copyFile(String s,String t){
+        Path sp=Paths.get(s);
+        Path tp=Paths.get(t);
+        CopyOption[] options =
+                new CopyOption[] { REPLACE_EXISTING };
+        try {
+            Files.copy(sp, tp, options);
+        } catch (IOException x) {
+            System.err.format("Unable to copy: %s: %s%n", sp, x);
+            return false;
+        }
+        return true;
     }
     public static boolean fileCanExec(String p){
         Path path = Paths.get(p);
@@ -79,8 +101,19 @@ public class mFiles {
         int t=proteinPath.lastIndexOf(File.separator);
         String proteinp=proteinPath.substring(t+1);
         ppdb.saveFile(workSpacePath+proteinp);
-        this.proteinPath=workSpacePath+proteinp;
-        this.proteinPsf=proteinPsfPath;
+        t=proteinPsfPath.lastIndexOf(File.separator);
+        String proteinpsf=proteinPsfPath.substring(t+1);
+        Path sP=Paths.get(proteinPsfPath);
+        Path toP=Paths.get(workSpacePath+proteinpsf);
+        CopyOption[] options =
+                new CopyOption[] { REPLACE_EXISTING };
+        try {
+                Files.copy(sP, toP, options);
+            } catch (IOException x) {
+                System.err.format("Unable to copy: %s: %s%n", sP, x);
+        }
+        this.proteinPdb=proteinp;
+        this.proteinPsf=proteinpsf;
         for(int i=0;i<s;i++){
             PdbWrapper pdbw=(PdbWrapper)linkersModel.getElementAt(i);
             rwPDB lpdb=pdbw.getData();
@@ -90,5 +123,6 @@ public class mFiles {
             //TODO deal with crosslink psf
             crosslinkersPath.add(workSpacePath+cp+".pdb");
         }
+        copyProFiles();
     }
 }
