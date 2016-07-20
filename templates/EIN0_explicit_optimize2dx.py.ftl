@@ -23,7 +23,7 @@ protocol.initRandomSeed(997)
 protocol.initParams('./parallhdg_new.pro')
 
 protocol.initStruct('ein_explicit.psf')
-protocol.initCoords('${proteinPdb}')
+protocol.initCoords('ein_explicit.pdb')
 
 from ensembleSimulation import EnsembleSimulation
 esim=EnsembleSimulation('ens',2)
@@ -179,7 +179,7 @@ def structLoopAction(loopInfo):
     pass
 
 StructureLoop(numStructures=256,
-              pdbTemplate='./Optimize_0519/EINOpt6x_STRUCTURE.pdb',
+              pdbTemplate='./EINOpt6x_STRUCTURE.pdb',
               averagePotList=potList,
               genViolationStats=1,
               structLoopAction=structLoopAction).run()
