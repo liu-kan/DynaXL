@@ -90,10 +90,7 @@ ensIndex=esim.member().memberIndex()
 if ensIndex==0:
    dyn.fix(""" segid " " """)
 else:
-   dyn.fix(""" segid " " and (resi 1:19 or resi 148:250) """) # allow 20 phi angle to reorient
    dyn.fix(""" segid " " and <#if dynFixs?size gt 1>(</#if>resi <#list dynFixs as dynFix>${dynFix} <#if dynFix_has_next>or resi</#if> </#list><#if dynFixs?size gt 1>)</#if> """) # allow 20 phi angle to reorient
-
-   dyn.group(""" segid " " and resi 24:142 """)
    dyn.group(""" segid " " and <#if dynGroups?size gt 1>(</#if>resi <#list dynGroups as dynGroup>${dynGroup} <#if dynGroup_has_next>or</#if> </#list><#if dynGroups?size gt 1>)</#if> """)
    pass
 
@@ -117,6 +114,9 @@ command("""
 ##
 <#list breakResids as breakResid>
 dyn.breakAllBondsIn("""(resi ${breakResid.getS()} and name C) or (resi ${breakResid.getE()} and name N)""")
+</#list>
+<#list fixIds as fixId>
+dyn.breakAllBondsTo(""" resid ${fixId} and name NZ """)
 </#list>
 
 #############################################################

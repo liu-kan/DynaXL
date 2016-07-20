@@ -132,6 +132,8 @@ public class crossLinkingGen {
                         gs.getNode(e.source).label,
                         gs.getNode(e.target).label,
                         segIDofLinks0.get(e.label)));
+                if(!scripts.fixId.contains(sourceid))
+                    scripts.fixId.add(sourceid);
             }else{
                 scripts.segidAndResidAndFixOfLinks.add(new segidAndResidAndFixOfLink(segID.get(e.id),rv,
                         gs.getNode(e.target).label,gs.getNode(e.source).label,

@@ -37,6 +37,7 @@ public class crossLinkingUI {
         editEdgeDB ee=new editEdgeDB();
         mgraphxEx c=new mgraphxEx(cl,ee);
         c.gpanel.setupGraphStyle(25,32,2,false);
+        c.gpanel.setupEdgeStyle(true);
         JPanel p;
         p = new CtrlInputPanel(c,dbio,dbio2,ee).panel;
         frame.getContentPane().add(c,BorderLayout.CENTER);

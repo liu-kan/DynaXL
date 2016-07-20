@@ -32,6 +32,7 @@ public class scriptRes
     public ArrayList<String> dynGroups;
     public ArrayList<String> linkRs;
     public ArrayList<breakResid> breakResids;
+    public ArrayList<Integer> fixId;
 
     public void init(String WorkSpace) throws Exception
     {
@@ -56,6 +57,7 @@ public class scriptRes
         dynGroups=new ArrayList<String>();
         linkRs=new ArrayList<String>();
         breakResids=new ArrayList<breakResid>();
+        fixId=new ArrayList<Integer>();
     }
 
     public void process()throws Exception
@@ -71,6 +73,7 @@ public class scriptRes
         root.put("breakResids",breakResids);
         root.put("proteinPdb",ProteinPdb);
         root.put("proteinPsf",ProteinPsf);
+        root.put("fixIds",fixId);
         Template temp = cfg.getTemplate("isop_patch3.inp.ftl");
         StringWriter out = new StringWriter();
         temp.process( root, out );
