@@ -1,5 +1,6 @@
 package org.liukan.DynaXL;
 
+import org.liukan.DynaXL.io.ResourceUtil;
 import org.liukan.mgraph.mgraphxEx;
 import org.liukan.mgraph.util.dbIO;
 import org.liukan.DynaXL.db.dbIO2;
@@ -40,7 +41,7 @@ public class crossLinkingUI {
         p = new CtrlInputPanel(c,dbio,dbio2,ee).panel;
         frame.getContentPane().add(c,BorderLayout.CENTER);
         frame.getContentPane().add(p,BorderLayout.EAST);
-
+        frame.setIconImages(ResourceUtil.getIconImages());
         frame.pack();
         frame.setSize( 820,600);
         frame.setLocationRelativeTo(null);

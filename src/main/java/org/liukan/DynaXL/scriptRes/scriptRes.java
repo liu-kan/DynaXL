@@ -25,6 +25,8 @@ public class scriptRes
     public ArrayList<segidAndResidAndDupOfNode> segidAndResidAndDupOfNodes;
     public ArrayList<segidAndResidAndFixOfLink> segidAndResidAndFixOfLinks;
     public ArrayList<String> linkFileNames;
+    public String ProteinPdb;
+    public String ProteinPsf;
     private String outDir;
     public ArrayList<String> dynFixs;
     public ArrayList<String> dynGroups;
@@ -67,6 +69,8 @@ public class scriptRes
         root.put( "dynGroups",dynGroups);
         root.put( "linkRs",linkRs);
         root.put("breakResids",breakResids);
+        root.put("proteinPdb",ProteinPdb);
+        root.put("proteinPsf",ProteinPsf);
         Template temp = cfg.getTemplate("isop_patch3.inp.ftl");
         StringWriter out = new StringWriter();
         temp.process( root, out );

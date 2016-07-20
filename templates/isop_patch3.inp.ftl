@@ -1,13 +1,13 @@
-rtf @../topallhdg_new.pro @BS2G.top @BS3.top end
+rtf @./topallhdg_new.pro @BS2.top @BS3.top end
 
-parameter @../parallhdg_new.pro end
+parameter @./parallhdg_new.pro end
 !!!!!!交联剂copy
-structure @./3eza_AH.psf <#list BSs as BS>@./${BS}.psf </#list>end
+structure @./${proteinPsf} <#list BSs as BS>@./${BS}.psf </#list>end
 <#list BSs as BS>
 coor @./${BS}.pdb end
 </#list>
 
-coor @./3eza_AH.pdb end
+coor @./${proteinPdb} end
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!氨基酸 !!交联剂相同same segid
 <#list segidAndResidOfNodes as segidAndResidOfNode>
