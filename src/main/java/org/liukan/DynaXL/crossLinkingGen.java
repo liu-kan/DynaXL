@@ -103,9 +103,9 @@ public class crossLinkingGen {
         String rv=segIDofLinks0.get(e.label);
         if(rv==null){
             if(e.label.equals("BS2"))
-                rv="C02";
+                rv="C05";
             else if(e.label.equals("BS3"))
-                rv="C03";
+                rv="C08";
             else
                 rv="C"+e.id;
             segIDofLinks0.put(e.label,rv);

@@ -23,7 +23,7 @@ protocol.initRandomSeed(997)
 protocol.initParams('./parallhdg_new.pro')
 
 protocol.initStruct('ein_explicit.psf')
-protocol.initCoords('Optimize_0516/camA_13.pdb')
+protocol.initCoords('${proteinPdb}')
 
 from ensembleSimulation import EnsembleSimulation
 esim=EnsembleSimulation('ens',2)
