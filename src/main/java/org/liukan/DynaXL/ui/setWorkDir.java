@@ -95,7 +95,6 @@ public class setWorkDir extends JDialog {
                         dispose();
                     }else if(r==JOptionPane.CANCEL_OPTION)
                         dispose();
-
                 }
             }
         });
