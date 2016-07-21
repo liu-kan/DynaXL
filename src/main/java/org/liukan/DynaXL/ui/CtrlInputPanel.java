@@ -181,8 +181,7 @@ public class CtrlInputPanel {
                             p = pb.start();
                             p.waitFor(); //
                             System.out.println("executed successfully");
-                        }
-                        catch (IOException ex) {
+                        } catch (IOException ex) {
                             System.out.println(ex);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -270,7 +269,7 @@ public class CtrlInputPanel {
         expMode.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
         modeTab.addTab("Expert Mode", expMode);
         final JLabel label3 = new JLabel();
-        label3.setText("<html>\n4. Domains define like:<br>\n1:19,148:250#24:142<br>\nDyn.fix and Dyn.group are<br>\nseparated by #\n</html>");
+        label3.setText("<html>\n4. Domains define like:<br>\n1:19,148:250#24:142<br>\nDomain 1 and Domain 2 are<br>\nseparated by #\n</html>");
         expMode.add(label3, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textRigid = new JTextField();
         expMode.add(textRigid, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
