@@ -1,6 +1,9 @@
 package org.liukan.DynaXL.ui;
 
 import freemarker.core.StringArraySequence;
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.Executor;
 import org.liukan.DynaXL.db.thePath;
 import org.liukan.DynaXL.io.PdbWrapper;
 import org.liukan.DynaXL.io.mFiles;
@@ -16,6 +19,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -193,16 +197,37 @@ public class CtrlInputPanel {
                             Process p = pb.start();
                             p.waitFor(); // Wait for the process to finish.
                             System.out.println("isop_patch3 executed successfully");
-System.out.println("\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
-        " -py EIN0_explicit_optimize2dx.py\"");
-                            pb = new ProcessBuilder("/bin/bash", "-c", "\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
+                            System.out.println("\"cd " + WorkSpaceDir + ";" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
                                     " -py EIN0_explicit_optimize2dx.py\"");
+                            try {
+                                File file = new File(WorkSpaceDir + "calc.sh");
+                                FileWriter fileWriter = new FileWriter(file);
+                                fileWriter.write("#!/bin/bash\n");
+                                fileWriter.write("cd " + WorkSpaceDir + "\n");
+                                fileWriter.write(XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
+                                        " -py EIN0_explicit_optimize2dx.py\n");
+                                fileWriter.flush();
+                                fileWriter.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
 
-                            pb.directory(new File(WorkSpaceDir));
-                            pb.redirectErrorStream(true);
-                            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
-                            p = pb.start();
-                            p.waitFor(); //
+
+                            String line = "/bin/bash " + WorkSpaceDir + "calc.sh";
+                            CommandLine cmdLine = CommandLine.parse(line);
+                            DefaultExecutor executor = new DefaultExecutor();
+                            int exitValue = executor.execute(cmdLine);
+
+
+                            /*ProcessBuilder pb2 = new ProcessBuilder("/bin/bash", WorkSpaceDir + "calc.sh");
+//                                    , "-e", "\"cd " + WorkSpaceDir + ";" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
+//                                    " -py EIN0_explicit_optimize2dx.py\"");
+
+                            pb2.directory(new File(WorkSpaceDir));
+                            pb2.redirectErrorStream(true);
+                            pb2.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
+                            Process p2 = pb2.start();
+                            p2.waitFor(); //*/
                             System.out.println("PY executed successfully");
                         } catch (IOException ex) {
                             System.out.println(ex);
