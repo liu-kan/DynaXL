@@ -62,8 +62,8 @@ public class setWorkDir extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fc=new JFileChooser(pdbDir);
-                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                if(fc.showDialog(me,"Setup Xplor path")==JFileChooser.APPROVE_OPTION){
+                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                if(fc.showDialog(me,"Setup Xplor BIN Dir")==JFileChooser.APPROVE_OPTION){
                     xlporPath=fc.getSelectedFile().getAbsolutePath();
                     xplorpath.setText( xlporPath);
                 }
@@ -85,7 +85,7 @@ public class setWorkDir extends JDialog {
         ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(mFiles.fileCanExec(xplorpath.getText())) {
+                if(mFiles.fileCanExec(xplorpath.getText()+File.separator+"xplor")&&mFiles.fileCanExec(xplorpath.getText()+File.separator+"pdb2psf")) {
                     isok = true;
                     dispose();
                 }else {

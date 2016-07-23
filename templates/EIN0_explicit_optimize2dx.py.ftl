@@ -66,7 +66,8 @@ rampedParams.append( MultRamp(0.004,4,
 
 from torsionDBPotTools import create_TorsionDBPot
 tDB = AvePot(create_TorsionDBPot('tDB',
-                                 selection=AtomSel('resi 19:24 or resi 142:148',esim.member())))
+                                 selection=AtomSel('resi <#list dynNoFixNorDyns as dynNoFixNorDyn>${dynNoFixNorDyn}<#if dynNoFixNorDyn_has_next> or resi </#if></#list>',esim.member())))
+
 potList.append( tDB )
 rampedParams.append( MultRamp(.01,1,"tDB.setScale(VALUE)") )
 
@@ -178,8 +179,8 @@ def structLoopAction(loopInfo):
 
     pass
 
-StructureLoop(numStructures=256,
-              pdbTemplate='./EINOpt6x_STRUCTURE.pdb',
+StructureLoop(numStructures=${numPDB},
+              pdbTemplate='./Results/EINOpt6x_STRUCTURE.pdb',
               averagePotList=potList,
               genViolationStats=1,
               structLoopAction=structLoopAction).run()

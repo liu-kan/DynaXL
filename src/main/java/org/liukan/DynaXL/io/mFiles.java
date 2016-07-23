@@ -1,6 +1,7 @@
 package org.liukan.DynaXL.io;
 
 import org.liukan.DynaXL.db.thePath;
+import org.liukan.DynaXL.scriptRes.xPsfGen;
 
 import javax.swing.*;
 import java.io.File;
@@ -18,6 +19,7 @@ import static java.nio.file.StandardCopyOption.*;
  * Created by liuk on 2016/7/6.
  */
 public class mFiles {
+    private final String xplorPath;
     public TreeMap<String, String> linkermap;
     private String workSpacePath;
     //private String proteinPath;
@@ -26,10 +28,12 @@ public class mFiles {
     public String proteinPsf;
     public String proteinPdb;
 
-    public mFiles(String ws){
+    public mFiles(String ws, String xplorPath){
         workSpacePath=ws;
+        this.xplorPath=xplorPath;
     }
     public void copyProFiles(){
+        new File(workSpacePath+File.separator+"Results").mkdirs();
         copyFile(thePath.getPath()+File.separator+"db"+File.separator+"topallhdg_new.pro",workSpacePath+File.separator+"topallhdg_new.pro");
         copyFile(thePath.getPath()+File.separator+"db"+File.separator+"parallhdg_new.pro",workSpacePath+File.separator+"parallhdg_new.pro");
         copyFile(thePath.getPath()+File.separator+"db"+File.separator+"BS2.top",workSpacePath+File.separator+"BS2.top");
@@ -64,7 +68,8 @@ public class mFiles {
         }
 
     }
-    public void preparePdbFiles(String proteinPath,String proteinPsfPath, DefaultListModel linkersModel){
+
+    public int preparePdbFiles(String proteinPath, String proteinPsfPath, DefaultListModel linkersModel) {
         crosslinkersPath=new ArrayList<>();
         boolean adjLinersResSeq=false;
         int s=linkersModel.getSize();
@@ -101,19 +106,17 @@ public class mFiles {
         int t=proteinPath.lastIndexOf(File.separator);
         String proteinp=proteinPath.substring(t+1);
         ppdb.saveFile(workSpacePath+proteinp);
-        t=proteinPsfPath.lastIndexOf(File.separator);
-        String proteinpsf=proteinPsfPath.substring(t+1);
-        Path sP=Paths.get(proteinPsfPath);
-        Path toP=Paths.get(workSpacePath+proteinpsf);
-        CopyOption[] options =
-                new CopyOption[] { REPLACE_EXISTING };
-        try {
-                Files.copy(sP, toP, options);
-            } catch (IOException x) {
-                System.err.format("Unable to copy: %s: %s%n", sP, x);
-        }
+
         this.proteinPdb=proteinp;
-        this.proteinPsf=proteinpsf;
+
+        this.proteinPsf=proteinp.substring(0,proteinp.toLowerCase().lastIndexOf(".pdb"))+".psf";
+        xPsfGen psfgen=new xPsfGen();
+        try {
+            psfgen.init(workSpacePath,xplorPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        psfgen.execPdb2Psf(proteinPath,workSpacePath+File.separator+proteinPsf);
         for(int i=0;i<s;i++){
             PdbWrapper pdbw=(PdbWrapper)linkersModel.getElementAt(i);
             rwPDB lpdb=pdbw.getData();
@@ -124,5 +127,9 @@ public class mFiles {
             crosslinkersPath.add(workSpacePath+cp+".pdb");
         }
         copyProFiles();
+        return proteinMaxResSeq;
     }
+
+
+
 }

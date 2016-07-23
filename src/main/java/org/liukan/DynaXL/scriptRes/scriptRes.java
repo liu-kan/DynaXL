@@ -33,10 +33,13 @@ public class scriptRes
     public ArrayList<String> linkRs;
     public ArrayList<breakResid> breakResids;
     public ArrayList<Integer> fixId;
+    public ArrayList<String> dynNoFixNorDyns;
+    public int numPDB;
 
     public void init(String WorkSpace) throws Exception
     {
         cfg = new Configuration();
+        numPDB=16;
         tempDir=thePath.getPath()+File.separator+"templates";
         if(WorkSpace!=null)
             outDir=WorkSpace;
@@ -58,6 +61,7 @@ public class scriptRes
         linkRs=new ArrayList<String>();
         breakResids=new ArrayList<breakResid>();
         fixId=new ArrayList<Integer>();
+        dynNoFixNorDyns=new ArrayList<String>();
     }
 
     public void process()throws Exception
@@ -74,6 +78,8 @@ public class scriptRes
         root.put("proteinPdb",ProteinPdb);
         root.put("proteinPsf",ProteinPsf);
         root.put("fixIds",fixId);
+        root.put("dynNoFixNorDyns",dynNoFixNorDyns);
+        root.put("numPDB",numPDB);
         Template temp = cfg.getTemplate("isop_patch3.inp.ftl");
         StringWriter out = new StringWriter();
         temp.process( root, out );

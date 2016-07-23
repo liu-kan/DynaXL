@@ -110,7 +110,8 @@ public class pdbFileChooser extends JDialog {
 
     private void preview() {
         if (viewer != null && previewPath != null) {
-            if (previewPath.endsWith(".pdb")) {
+
+            if (previewPath.toLowerCase().endsWith(".pdb")) {
                 rwPDB pdb = new rwPDB(previewPath);
                 textPDB.setText("");
                 textPDB.setRows(pdb.pdbLines.size());

@@ -1,5 +1,6 @@
 package org.liukan.DynaXL.ui;
 
+import freemarker.core.StringArraySequence;
 import org.liukan.DynaXL.db.thePath;
 import org.liukan.DynaXL.io.PdbWrapper;
 import org.liukan.DynaXL.io.mFiles;
@@ -39,10 +40,12 @@ public class CtrlInputPanel {
     private setPdbFiles setpdbfiles;
     private TreeMap<String, String> linkermap;
     private mFiles mf;
+    private int proteinMaxResId;
 
     public CtrlInputPanel(mgraphxEx _mg, dbIO _dbio, dbIO2 _dbio2, editEdgeDB ee) {
         mg = _mg;
         dbio = _dbio;
+        proteinMaxResId = -1;
         this.editEdgeDlg = ee;
         mf = null;
         dbio2 = _dbio2;
@@ -89,6 +92,18 @@ public class CtrlInputPanel {
         generateScriptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String numS = JOptionPane.showInputDialog("How many alternative STRUCTUREs do you want to generate?");
+                int num = 32;
+                try {
+                    num = Integer.parseInt(numS);
+                    if (num < 1 || num > 1024) {
+                        JOptionPane.showMessageDialog(null, "Please input a Integer between 1 and 1024");
+                        return;
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Please input a Integer between 1 and 1024");
+                    return;
+                }
                 if (mf == null)
                     JOptionPane.showMessageDialog(panel, "Please follow the index order of buttons");
                 domainDef.clear();
@@ -101,9 +116,12 @@ public class CtrlInputPanel {
                 domainDef.add(s);
                 domainDef.add(s1);
                 crossLinkingGen gen = new crossLinkingGen(mg.gpanel.saveG2graphStru("", 0), domainDef, WorkSpaceDir);
+                gen.proteinMaxID = proteinMaxResId;
                 gen.setXplor(XplorPath);
                 gen.setLinkersMap(mf.linkermap);
+
                 gen.setPdbAndPsfOfProtein(mf.proteinPdb, mf.proteinPsf);
+                gen.setNumPDB(num);
                 gen.genSricpt();
             }
         });
@@ -115,7 +133,7 @@ public class CtrlInputPanel {
                     WorkSpaceDir = thePath.getPath() + File.separator + "workSpace" + File.separator;
                 //XplorPath = dbio2.readVar("xplorPath");
                 if (XplorPath == null)
-                    XplorPath = "/usr/local/bin/xplor";
+                    XplorPath = "/usr/local/bin";
                 setWorkDir sws = new setWorkDir(WorkSpaceDir, XplorPath);
                 sws.showCenter();
                 if (sws.ok()) {
@@ -142,8 +160,8 @@ public class CtrlInputPanel {
                     } catch (IOException | SecurityException ex) {
                         System.err.println(ex);
                     }
-                    mf = new mFiles(WorkSpaceDir);
-                    mf.preparePdbFiles(setpdbfiles.proteinPdbPath, setpdbfiles.proteinPsfPath, setpdbfiles.linkersModel);
+                    mf = new mFiles(WorkSpaceDir, XplorPath);
+                    proteinMaxResId = mf.preparePdbFiles(setpdbfiles.proteinPdbPath, setpdbfiles.proteinPsfPath, setpdbfiles.linkersModel);
                     ArrayList<String> sl = new ArrayList<String>();
                     int size = setpdbfiles.linkersModel.getSize();
                     for (int i = 0; i < size; i++) {
@@ -159,28 +177,33 @@ public class CtrlInputPanel {
         a7ExecuteInXplorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
                 Thread thread = new Thread() {
                     public void run() {
                         try {
                             //Runtime.getRuntime().exec(XplorPath);
                             ProcessBuilder pb =
-                                    new ProcessBuilder(XplorPath, "-in", "isop_patch3.inp");
+                                    new ProcessBuilder(XplorPath + File.separator + "xplor",
+                                            "-in", "isop_patch3.inp");
                             Map<String, String> env = pb.environment();
                             pb.directory(new File(WorkSpaceDir));
                             File log = new File("log");
-                            pb.redirectErrorStream(true);
-                            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
+                            //pb.redirectErrorStream(true);
+                            //pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
                             Process p = pb.start();
                             p.waitFor(); // Wait for the process to finish.
-
-                            pb = new ProcessBuilder(XplorPath, "-py", "EIN0_explicit_optimize2dx.py");
+                            System.out.println("isop_patch3 executed successfully");
+System.out.println("\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
+        " -py EIN0_explicit_optimize2dx.py\"");
+                            pb = new ProcessBuilder("/bin/bash", "-c", "\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
+                                    " -py EIN0_explicit_optimize2dx.py\"");
 
                             pb.directory(new File(WorkSpaceDir));
                             pb.redirectErrorStream(true);
                             pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
                             p = pb.start();
                             p.waitFor(); //
-                            System.out.println("executed successfully");
+                            System.out.println("PY executed successfully");
                         } catch (IOException ex) {
                             System.out.println(ex);
                         } catch (InterruptedException e) {
@@ -188,6 +211,7 @@ public class CtrlInputPanel {
                         }
                     }
                 };
+                thread.setPriority(10);
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         xProgressBar.show((Frame) null, thread,

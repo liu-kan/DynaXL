@@ -47,6 +47,7 @@ public class crossLinkingGen {
     private String WorkSpace;
     private String xplorPath;
     private int resSize;
+    public int proteinMaxID;
 
     public static <T, E> Set<T> getKeysByValue(Map<T, E> map, E value) {
         Set<T> keys = new HashSet<T>();
@@ -217,7 +218,7 @@ public class crossLinkingGen {
         lpdb.setResSeq(ResName,Integer.toString(resSize));
         lpdb.saveFile(WorkSpace+ResName+"_"+resSize+".pdb");
         //TODO genpsf
-        crosslinkPsfGen clgen=new crosslinkPsfGen();
+        xPsfGen clgen=new xPsfGen();
         try {
             clgen.init(WorkSpace,xplorPath);
         } catch (Exception e) {
@@ -358,7 +359,25 @@ public class crossLinkingGen {
                 }
             }
         }
+        genDynNoFixNorDyns();
         return true;
+    }
+
+    private void genDynNoFixNorDyns() {
+        int s=domainIdx.size();
+        if(s<2){
+            JOptionPane.showMessageDialog(null,"Define of domains or linkers may have errors!");
+            return;
+        }
+        for(int i=0;i<s-1;i++){
+            if(domainIdx.get(i).getWhich()!=domainIdx.get(i+1).getWhich()){
+
+                scripts.dynNoFixNorDyns.add(domainIdx.get(i).getIndex()+":"+domainIdx.get(i+1).getIndex());
+            }
+
+        }
+        if(domainIdx.get(s-1).getIndex()<proteinMaxID)
+            scripts.dynNoFixNorDyns.add(domainIdx.get(s-1).getIndex()+":"+proteinMaxID);
     }
 
     private String genLinkFileNames(String linkName,String edgeid) {
@@ -368,5 +387,10 @@ public class crossLinkingGen {
 
     public void setXplor(String xplor) {
         xplorPath = xplor;
+    }
+
+    public void setNumPDB(int numPDB) {
+        scripts.numPDB = numPDB;
+
     }
 }

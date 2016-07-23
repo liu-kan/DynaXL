@@ -6,18 +6,16 @@ import freemarker.template.Template;
 import org.apache.commons.io.FileUtils;
 import org.liukan.DynaXL.db.thePath;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by liuk on 16-7-19.
  */
-public class crosslinkPsfGen {
+public class xPsfGen {
         private Configuration cfg;
         private String tempDir=null;
         private File file;
@@ -58,14 +56,36 @@ public class crosslinkPsfGen {
             //System.out.println( );
             file = new File(outDir+"psf-bs2bs3.inp");
             FileUtils.writeStringToFile(file, out.getBuffer().toString() , "UTF-8");
-            execXplor();
+            execXplorPsf();
 
         }
-        public void execXplor(){
+        public void execPdb2Psf(String pdbfile,String psfname){
+            try {
+                //Runtime.getRuntime().exec(XplorPath);
+                //String psfname=pdbfile.substring(pdbfile.lastIndexOf(File.separator),pdbfile.lastIndexOf("."))
+                ProcessBuilder pb =
+                        new ProcessBuilder(XplorPath+ File.separator + "pdb2psf", pdbfile,
+                                "-outfile", psfname);
+                Map<String, String> env = pb.environment();
+                pb.directory(new File(outDir));
+                File log = new File("log");
+                pb.redirectErrorStream(true);
+                pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
+                Process p = pb.start();
+                p.waitFor(); // Wait for the process to finish.
+                System.out.println("pdb2psf executed successfully");
+            }
+            catch (IOException ex) {
+                System.out.println(ex);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        public void execXplorPsf(){
             try {
                 //Runtime.getRuntime().exec(XplorPath);
                 ProcessBuilder pb =
-                        new ProcessBuilder(XplorPath, "-in", "psf-bs2bs3.inp");
+                        new ProcessBuilder(XplorPath+ File.separator + "xplor", "-in", "psf-bs2bs3.inp");
                 Map<String, String> env = pb.environment();
                 pb.directory(new File(outDir));
                 File log = new File("log");
@@ -83,7 +103,7 @@ public class crosslinkPsfGen {
         }
         public static void main(String[] args)throws Exception
         {
-            org.liukan.DynaXL.scriptRes.crosslinkPsfGen hf = new org.liukan.DynaXL.scriptRes.crosslinkPsfGen();
+            xPsfGen hf = new xPsfGen();
             hf.init(null,null);
             hf.process();
         }
