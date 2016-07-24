@@ -52,11 +52,11 @@ public class setWorkDir extends JDialog {
         panel.add(dir,"width 200:400:500,grow");
         chooseWorkSpace=new JButton("Choose WorkSpace Dir...");
         panel.add(chooseWorkSpace,"wrap");
-        panel.add(new JLabel("Xplor path: "));
+        panel.add(new JLabel("Xplor bin folder (contains xplor and pdb2psf) : "));
         xplorpath=new JTextField(xlporPath);
         xplorpath.setToolTipText("Input it in the text field or find xplor path by pressing right button");
         panel.add(xplorpath,"grow");
-        setXplor=new JButton("Set Xplor path...");
+        setXplor=new JButton("Choose Xplor bin Dir...");
         setXplor.setToolTipText("Find xplor path or input it in the left text field");
         setXplor.addActionListener(new ActionListener() {
             @Override

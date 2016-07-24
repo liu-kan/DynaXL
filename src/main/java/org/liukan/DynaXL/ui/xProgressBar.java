@@ -33,7 +33,7 @@ public class xProgressBar implements ActionListener {
     private JLabel lbStatus;
     private JButton btnCancel;
     private Window parent;
-    private Thread thread; //
+    private xThread thread; //
     private String statusInfo;
     private String resultInfo;
     private String cancelInfo;
@@ -42,7 +42,7 @@ public class xProgressBar implements ActionListener {
      * @param parent
      * @param thread
      */
-    public static void show(Window parent, Thread thread) {
+    public static void show(Window parent, xThread thread) {
         new xProgressBar(parent, thread, DEFAULT_STATUS, null, null);
     }
 
@@ -51,7 +51,7 @@ public class xProgressBar implements ActionListener {
      * @param thread
      * @param statusInfo
      */
-    public static void show(Window parent, Thread thread, String statusInfo) {
+    public static void show(Window parent, xThread thread, String statusInfo) {
         new xProgressBar(parent, thread, statusInfo, null, null);
     }
 
@@ -62,7 +62,7 @@ public class xProgressBar implements ActionListener {
      * @param resultInfo
      * @param cancelInfo
      */
-    public static void show(Window parent, Thread thread, String statusInfo,
+    public static void show(Window parent, xThread thread, String statusInfo,
                             String resultInfo, String cancelInfo) {
         new xProgressBar(parent, thread, statusInfo, resultInfo, cancelInfo);
     }
@@ -74,7 +74,7 @@ public class xProgressBar implements ActionListener {
      * @param resultInfo
      * @param cancelInfo
      */
-    private xProgressBar(Window parent, Thread thread, String statusInfo,
+    private xProgressBar(Window parent, xThread thread, String statusInfo,
                          String resultInfo, String cancelInfo) {
         this.parent = parent;
         this.thread = thread;
@@ -164,7 +164,7 @@ public class xProgressBar implements ActionListener {
     @SuppressWarnings("deprecation")
     public void actionPerformed(ActionEvent e) {
         resultInfo = cancelInfo;
-        thread.stop();
+        thread.end();
     }
 
     /**
@@ -188,7 +188,7 @@ public class xProgressBar implements ActionListener {
             }
         };
         //
-        xProgressBar.show((Frame) null, thread, "Status", "Result", "Cancel");
+        //xProgressBar.show((Frame) null, thread, "Status", "Result", "Cancel");
 
     }
 }

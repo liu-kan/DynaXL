@@ -16,6 +16,8 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Locale;
 
+import static org.apache.commons.lang3.SystemUtils.IS_OS_UNIX;
+
 /**
  * Created by liuk on 2016/6/14.
  */
@@ -62,6 +64,12 @@ public class crossLinkingUI {
 
     public static void main(String[] args)
     {
+
         crossLinkingUI ui=new crossLinkingUI();
+        if(!IS_OS_UNIX)
+            JOptionPane.showMessageDialog(null,"DynaXL depends on XPLOR-NIH now, which can only run on UINX like OS.\n" +
+                    "So partial functions will be disabled in your system.\n" +
+                    "To try all functions, please swicth to Linux/Mac/Irix or other UINX like OS.");
+
     }
 }

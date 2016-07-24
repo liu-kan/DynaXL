@@ -4,10 +4,10 @@ Class-Path: libs/miglayout-4.0-ideutil.jar libs/miglayout-4.0-swing.ja
  5.jar libs/vecmath-1.3.1.jar libs/slf4j-api-1.7.14.jar libs/biojava-p
  hylo-4.2.0.jar libs/jgrapht-core-0.9.1.jar libs/forester-1.038.jar li
  bs/mgraphEx.jar libs/freemarker.jar libs/miglayout-4.0.jar libs/commo
- ns-io-2.5.jar libs/miglayout-4.0-swing.jar libs/sqlite-jdbc-3.8.11.2.
- jar libs/miglayout-4.0-ideutil.jar libs/log4j-api-2.5.jar libs/biojav
- a-structure-4.2.0.jar libs/log4j-slf4j-impl-2.5.jar libs/biojava-core
- -4.2.1.jar libs/biojava-structure-gui-4.2.0.jar libs/jmol-13.0.14.jar
-  libs/biojava-alignment-4.2.0.jar
+ ns-io-2.5.jar libs/commons-exec-1.3.jar libs/miglayout-4.0-swing.jar 
+ libs/sqlite-jdbc-3.8.11.2.jar libs/miglayout-4.0-ideutil.jar libs/log
+ 4j-api-2.5.jar libs/biojava-structure-4.2.0.jar libs/log4j-slf4j-impl
+ -2.5.jar libs/biojava-core-4.2.1.jar libs/biojava-structure-gui-4.2.0
+ .jar libs/jmol-13.0.14.jar libs/biojava-alignment-4.2.0.jar
 Main-Class: org.liukan.DynaXL.crossLinkingUI
 
