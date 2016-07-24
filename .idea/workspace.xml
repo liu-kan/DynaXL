@@ -7,18 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec6fd756-5bf7-482a-8b21-89e7a9120400" name="Default" comment="to add psf">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/xThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/db2.sqlite" afterPath="$PROJECT_DIR$/db/db2.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/DynaXL.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/DynaXL.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DynaXL.iml" afterPath="$PROJECT_DIR$/DynaXL.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.form" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setWorkDir.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/setWorkDir.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/xProgressBar.java" afterPath="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/xProgressBar.java" />
     </list>
     <ignored path="xplor-sui.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CtrlInputPanel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CtrlInputPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="217">
@@ -109,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crossLinkingUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crossLinkingUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+            <state relative-caret-position="487">
+              <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -221,8 +210,8 @@
         <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.form" />
         <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/xProgressBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/xThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/CtrlInputPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java" />
       </list>
     </option>
   </component>
@@ -1206,14 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/ui/xProgressBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -1229,6 +1210,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="187" column="53" selection-start-line="187" selection-start-column="53" selection-end-line="187" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/liukan/DynaXL/crossLinkingUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
           <folding />
         </state>
       </provider>
