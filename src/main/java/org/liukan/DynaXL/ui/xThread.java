@@ -32,13 +32,24 @@ public class xThread extends Thread {
     }
     public void run() {
         try {
+            //xplor -in hbuild.inp
             ProcessBuilder pb =
                     new ProcessBuilder(XplorPath + File.separator + "xplor",
-                            "-in", "isop_patch3.inp");
+                            "-in", "hbuild.inp");
             Map<String, String> env = pb.environment();
             pb.directory(new File(WorkSpaceDir));
             File log = new File("log");
             Process p = pb.start();
+            p.waitFor(); // Wait for the process to finish.
+            System.out.println("hbuild executed successfully");
+
+            pb =
+                    new ProcessBuilder(XplorPath + File.separator + "xplor",
+                            "-in", "isop_patch3.inp");
+            env = pb.environment();
+            pb.directory(new File(WorkSpaceDir));
+            log = new File("log");
+            p = pb.start();
             p.waitFor(); // Wait for the process to finish.
             System.out.println("isop_patch3 executed successfully");
 

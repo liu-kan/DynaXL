@@ -75,7 +75,11 @@ public class scriptRes
         root.put( "dynGroups",dynGroups);
         root.put( "linkRs",linkRs);
         root.put("breakResids",breakResids);
+        if(ProteinPdb.toLowerCase().endsWith(".pdb"))
+            ProteinPdb=ProteinPdb.substring(0,ProteinPdb.toLowerCase().indexOf(".pdb"));
         root.put("proteinPdb",ProteinPdb);
+        if(ProteinPsf.toLowerCase().endsWith(".psf"))
+            ProteinPsf=ProteinPsf.substring(0,ProteinPsf.toLowerCase().indexOf(".psf"));
         root.put("proteinPsf",ProteinPsf);
         root.put("fixIds",fixId);
         root.put("dynNoFixNorDyns",dynNoFixNorDyns);
@@ -97,6 +101,12 @@ public class scriptRes
         temp.process( root, out );
         //System.out.println( );
         file = new File(outDir+"EIN0_explicit_optimize2dx.py");
+        FileUtils.writeStringToFile(file, out.getBuffer().toString() , "UTF-8");
+        temp = cfg.getTemplate("hbuild.inp.ftl");
+        out = new StringWriter();
+        temp.process( root, out );
+        //System.out.println( );
+        file = new File(outDir+"hbuild.inp");
         FileUtils.writeStringToFile(file, out.getBuffer().toString() , "UTF-8");
         JOptionPane.showMessageDialog(null,"Scripts have been generated in\n"+outDir);
     }
