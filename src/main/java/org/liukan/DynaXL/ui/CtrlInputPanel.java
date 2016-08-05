@@ -193,8 +193,8 @@ public class CtrlInputPanel {
                             Process p = pb.start();
                             p.waitFor(); // Wait for the process to finish.
                             System.out.println("isop_patch3 executed successfully");
-System.out.println("\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
-        " -py EIN0_explicit_optimize2dx.py\"");
+                            System.out.println("\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
+                                    " -py EIN0_explicit_optimize2dx.py\"");
                             pb = new ProcessBuilder("/bin/bash", "-c", "\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
                                     " -py EIN0_explicit_optimize2dx.py\"");
 
@@ -260,10 +260,10 @@ System.out.println("\"" + XplorPath + File.separator + "xplor -smp " + Integer.t
         final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
         panel.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         a7ExecuteInXplorButton = new JButton();
-        a7ExecuteInXplorButton.setText("7. Execute in Xplor");
+        a7ExecuteInXplorButton.setText("6. Execute in Xplor");
         panel.add(a7ExecuteInXplorButton, new com.intellij.uiDesigner.core.GridConstraints(9, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         generateScriptButton = new JButton();
-        generateScriptButton.setText("6. Generate script");
+        generateScriptButton.setText("5. Generate script");
         panel.add(generateScriptButton, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         saveCrossLinksModeButton = new JButton();
         saveCrossLinksModeButton.setText("Save Cross-links");
@@ -293,14 +293,15 @@ System.out.println("\"" + XplorPath + File.separator + "xplor -smp " + Integer.t
         expMode.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
         modeTab.addTab("Expert Mode", expMode);
         final JLabel label3 = new JLabel();
-        label3.setText("<html>\n4. Domains define like:<br>\n1:19,148:250#24:142<br>\nDomain 1 and Domain 2 are<br>\nseparated by #\n</html>");
+        label3.setText("<html>\n4. Define domains  like this:<br>\n1:19,148:250#24:142<br>\nDomain 1 and Domain 2 are<br>\nseparated by #\n</html>");
         expMode.add(label3, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textRigid = new JTextField();
         expMode.add(textRigid, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final JLabel label4 = new JLabel();
-        label4.setText("<html>\n5. Linkers define like:<br>\n20:23,143:147\n</html>");
+        label4.setText("<html>\nFlexible linkers between domains<br>\nare automatically generated.\n</html>");
         expMode.add(label4, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textFlex = new JTextField();
+        textFlex.setEditable(false);
         expMode.add(textFlex, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         a2ChoosePDBFilesButton = new JButton();
         a2ChoosePDBFilesButton.setText("2. Choose PDB files");
