@@ -339,7 +339,7 @@ public class crossLinkingGen {
             domainIdx.add(new IndexPair(Integer.parseInt(dyn[1]),0));
         }
         domainIdx.sort(Comparator.comparing(IndexPair::getIndex));
-
+//TODO add textFlex auto
         String textFlex = domainDef.get(1).trim();
         String[] links=textFlex.split(",");
         for(String i:links){
