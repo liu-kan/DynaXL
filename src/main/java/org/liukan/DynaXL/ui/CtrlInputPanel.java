@@ -1,6 +1,7 @@
 package org.liukan.DynaXL.ui;
 
 import freemarker.core.StringArraySequence;
+import org.apache.commons.exec.*;
 import org.liukan.DynaXL.db.thePath;
 import org.liukan.DynaXL.io.PdbWrapper;
 import org.liukan.DynaXL.io.mFiles;
@@ -16,6 +17,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -177,45 +179,13 @@ public class CtrlInputPanel {
         a7ExecuteInXplorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
-                Thread thread = new Thread() {
-                    public void run() {
-                        try {
-                            //Runtime.getRuntime().exec(XplorPath);
-                            ProcessBuilder pb =
-                                    new ProcessBuilder(XplorPath + File.separator + "xplor",
-                                            "-in", "isop_patch3.inp");
-                            Map<String, String> env = pb.environment();
-                            pb.directory(new File(WorkSpaceDir));
-                            File log = new File("log");
-                            //pb.redirectErrorStream(true);
-                            //pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
-                            Process p = pb.start();
-                            p.waitFor(); // Wait for the process to finish.
-                            System.out.println("isop_patch3 executed successfully");
-                            System.out.println("\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
-                                    " -py EIN0_explicit_optimize2dx.py\"");
-                            pb = new ProcessBuilder("/bin/bash", "-c", "\"" + XplorPath + File.separator + "xplor -smp " + Integer.toString(Runtime.getRuntime().availableProcessors()) +
-                                    " -py EIN0_explicit_optimize2dx.py\"");
-
-                            pb.directory(new File(WorkSpaceDir));
-                            pb.redirectErrorStream(true);
-                            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
-                            p = pb.start();
-                            p.waitFor(); //
-                            System.out.println("PY executed successfully");
-                        } catch (IOException ex) {
-                            System.out.println(ex);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
+                xThread thread = new xThread(XplorPath, WorkSpaceDir);
                 thread.setPriority(10);
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         xProgressBar.show((Frame) null, thread,
-                                "Calculating", "Calculated successfully!", "Cancel");
+                                "<html>Calculating... It may take very long time. <br>" +
+                                        "Have a cup of coffee, and take a rest :-)</html>", "Calculated successfully!", "Cancel");
                     }
                 });
             }
@@ -255,7 +225,7 @@ public class CtrlInputPanel {
         panel = new JPanel();
         panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(10, 1, new Insets(0, 0, 0, 0), -1, -1));
         final JLabel label1 = new JLabel();
-        label1.setText("<html>DynaXL generates and executes<br>\nthe script for rigid-body ensemble <br>\nrefinement against cross-links<br>\n identified with high confidence</html>");
+        label1.setText("<html>\nDynaXL generates and executes<br>\nthe script for rigid-body <br>\nensemble refinement against <br>\ncross-links identified with <br>\nhigh confidence<br>\n<br>\nPlease follow the instructions<br>\nlisted below step by step to <br>\noperate the software.\n</html>");
         panel.add(label1, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
         panel.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
@@ -310,7 +280,7 @@ public class CtrlInputPanel {
         a1ChooseAWorkButton.setText("[1]. Choose a work directory");
         panel.add(a1ChooseAWorkButton, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label5 = new JLabel();
-        label5.setText("<html>3. Draw the relationship diagram of<br> cross link\n</html>");
+        label5.setText("<html>3. Draw the topology diagram<br>\nof cross link.\n</html>");
         panel.add(label5, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 

@@ -22,10 +22,10 @@
         <element id="library" level="project" name="sqlite-jdbc-3.8.11.2" />
         <element id="library" level="project" name="miglayout-4.0-ideutil" />
         <element id="library" level="project" name="libs" />
+        <element id="library" level="project" name="commons-exec-1.3" />
       </element>
       <element id="directory" name="db">
-        <element id="file-copy" path="$PROJECT_DIR$/db/db.sqlite" />
-        <element id="file-copy" path="$PROJECT_DIR$/db/db2.sqlite" />
+        <element id="dir-copy" path="$PROJECT_DIR$/db" />
       </element>
       <element id="directory" name="templates">
         <element id="dir-copy" path="$PROJECT_DIR$/templates" />
@@ -40,7 +40,6 @@
         <element id="file-copy" path="$PROJECT_DIR$/db/BS3.pdb" />
         <element id="file-copy" path="$PROJECT_DIR$/db/BS2.pdb" />
         <element id="file-copy" path="$PROJECT_DIR$/db/3eza_AH.pdb" />
-        <element id="file-copy" path="$PROJECT_DIR$/db/rand_1d1d_95.pdb" />
       </element>
       <element id="directory" name="res">
         <element id="directory" name="icons">
