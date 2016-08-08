@@ -15,6 +15,7 @@ import java.util.*;
 public class crossLinkingGen {
     private final graphStru gs;
     private final scriptRes scripts;
+    private int proteinMaxResId;
 
     private TreeMap<String, String> crossLinkerMap;
     private  String segidPrefix;
@@ -58,8 +59,9 @@ public class crossLinkingGen {
         }
         return keys;
     }
-    public crossLinkingGen(graphStru gs, ArrayList<String> domainDef, String workSpaceDir) {
+    public crossLinkingGen(graphStru gs, ArrayList<String> domainDef, String workSpaceDir, int proteinMaxResId) {
         WorkSpace=workSpaceDir;
+        this.proteinMaxResId=proteinMaxResId;
         segidPrefix="XL";
         procedNodes=new HashMap<mnode,String>();
         this.gs=gs;
@@ -287,10 +289,11 @@ public class crossLinkingGen {
         segID.put(n,segid);
         return segid;
     }
-    public void genSricpt() {
-        if(domainsAndLinks()!=true) {
+    public String genSricpt() {
+        String rv=domainsAndLinks();
+        if(rv==null) {
             JOptionPane.showMessageDialog(null,"Define of domains or linkers may have errors!");
-            return;
+            return null;
         }
         genSegid();
         crossLinkResid();
@@ -299,8 +302,9 @@ public class crossLinkingGen {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return rv;
     }
-    private boolean domainsAndLinks() {
+    private String domainsAndLinks() {
         List<Integer> fixIdx =  new ArrayList<Integer>();
         List<Integer> fexIdx =  new ArrayList<Integer>();
         domainIdx =  new ArrayList<IndexPair>();
@@ -309,7 +313,7 @@ public class crossLinkingGen {
         String[] rigids=textRigid.split("#");
         if(rigids.length!=2) {
             JOptionPane.showMessageDialog(null, "Dyn.fix and Dyn.group must be separated by #");
-            return false;
+            return null;
         }
         String dynfixs=rigids[0].trim();
         String[] dynfix=dynfixs.split(",");
@@ -321,7 +325,7 @@ public class crossLinkingGen {
             String fix[]=i.split(":");
             if(fix.length!=2){
                 JOptionPane.showMessageDialog(null, "A single Dyn.fix must be defined like 1:19!");
-                return false;
+                return null;
             }
             fixIdx.add(Integer.parseInt(fix[0]));
             fixIdx.add(Integer.parseInt(fix[1]));
@@ -333,21 +337,42 @@ public class crossLinkingGen {
             String dyn[]=i.split(":");
             if(dyn.length!=2){
                 JOptionPane.showMessageDialog(null, "A single Dyn.dyn must be defined like 1:19!");
-                return false;
+                return null;
             }
             domainIdx.add(new IndexPair(Integer.parseInt(dyn[0]),0));
             domainIdx.add(new IndexPair(Integer.parseInt(dyn[1]),0));
         }
         domainIdx.sort(Comparator.comparing(IndexPair::getIndex));
 //TODO add textFlex auto
-        String textFlex = domainDef.get(1).trim();
+        if(proteinMaxResId==-1){
+            JOptionPane.showMessageDialog(null, "Please define PDB first!");
+            return null;
+        }
+
+        String textFlex=new String();
+        int sizdo=domainIdx.size();
+        for(int idd=1;idd<sizdo;idd++){
+            if(domainIdx.get(idd-1).getWhich()!=domainIdx.get(idd).getWhich()){
+                if(textFlex.length()<1)
+                    textFlex=Integer.toString(domainIdx.get(idd-1).getIndex()+1)+':'+Integer.toString(
+                            domainIdx.get(idd).getIndex()-1);
+                else
+                    textFlex=textFlex+','+Integer.toString(domainIdx.get(idd-1).getIndex()+1)+':'+
+                            Integer.toString(domainIdx.get(idd).getIndex()-1);
+            }
+        }
+        if(domainIdx.get(0).getIndex()!=1)
+            textFlex="1:"+Integer.toString( domainIdx.get(0).getIndex()-1)+','+textFlex;
+        else if(domainIdx.get(sizdo-1).getIndex()<proteinMaxResId){
+            textFlex=textFlex+','+Integer.toString( domainIdx.get(sizdo-1).getIndex()+1)+':'+proteinMaxResId;
+        }
         String[] links=textFlex.split(",");
         for(String i:links){
             scripts.linkRs.add(i);
             String link[]=i.split(":");
             if(link.length!=2){
                 JOptionPane.showMessageDialog(null, "A single linker must be defined like 1:19!");
-                return false;
+                return null;
             }
             fexIdx.add(Integer.parseInt(link[0]));
             fexIdx.add(Integer.parseInt(link[1]));
@@ -360,7 +385,7 @@ public class crossLinkingGen {
             }
         }
         genDynNoFixNorDyns();
-        return true;
+        return textFlex;
     }
 
     private void genDynNoFixNorDyns() {

@@ -73,7 +73,7 @@ public class CtrlInputPanel {
                 }
                 ArrayList<String> p = dbio2.readCrossLink(gid);
                 textRigid.setText(p.get(0));
-                textFlex.setText(p.get(1));
+                //textFlex.setText(p.get(1));
             }
         });
         saveCrossLinksModeButton.addActionListener(new ActionListener() {
@@ -111,20 +111,22 @@ public class CtrlInputPanel {
                 domainDef.clear();
                 String s = textRigid.getText().trim();
                 String s1 = textFlex.getText().trim();
-                if (s.length() < 1 || s1.length() < 1) {
+                if (s.length() < 1) {
                     JOptionPane.showMessageDialog(null, "Please input info about Domains and Links!");
                     return;
                 }
                 domainDef.add(s);
                 domainDef.add(s1);
-                crossLinkingGen gen = new crossLinkingGen(mg.gpanel.saveG2graphStru("", 0), domainDef, WorkSpaceDir);
+                crossLinkingGen gen = new crossLinkingGen(mg.gpanel.saveG2graphStru("", 0), domainDef, WorkSpaceDir, proteinMaxResId);
                 gen.proteinMaxID = proteinMaxResId;
                 gen.setXplor(XplorPath);
                 gen.setLinkersMap(mf.linkermap);
 
                 gen.setPdbAndPsfOfProtein(mf.proteinPdb, mf.proteinPsf);
                 gen.setNumPDB(num);
-                gen.genSricpt();
+                String tf = gen.genSricpt();
+                if (tf != null)
+                    textFlex.setText(tf);
             }
         });
         a1ChooseAWorkButton.addActionListener(new ActionListener() {

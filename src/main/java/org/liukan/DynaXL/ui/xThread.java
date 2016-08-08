@@ -15,7 +15,8 @@ public class xThread extends Thread {
     private ExecuteWatchdog watchdog;
 
     public void end(){
-        watchdog.destroyProcess();
+        if(watchdog!=null)
+            watchdog.destroyProcess();
         String line = "/usr/bin/killall xplor";
         CommandLine cmdLine = CommandLine.parse(line);
         DefaultExecutor executor = new DefaultExecutor();
@@ -29,6 +30,7 @@ public class xThread extends Thread {
     public xThread(String XplorPath,String WorkSpaceDir){
         this.XplorPath=XplorPath;
         this.WorkSpaceDir=WorkSpaceDir;
+        watchdog=null;
     }
     public void run() {
         try {
@@ -39,7 +41,7 @@ public class xThread extends Thread {
             Map<String, String> env = pb.environment();
             pb.directory(new File(WorkSpaceDir));
             File log = new File("log");
-            Process p = pb.start();
+            Process p = pb.inheritIO().start();
             p.waitFor(); // Wait for the process to finish.
             System.out.println("hbuild executed successfully");
 
@@ -49,7 +51,7 @@ public class xThread extends Thread {
             env = pb.environment();
             pb.directory(new File(WorkSpaceDir));
             log = new File("log");
-            p = pb.start();
+            p = pb.inheritIO().start();
             p.waitFor(); // Wait for the process to finish.
             System.out.println("isop_patch3 executed successfully");
 

@@ -24,6 +24,8 @@ public class setPdbFiles extends JDialog {
     private JButton delCrosslinkerButton;
     private JTextArea textAreaProtein;
     private JButton chooseProteinPdbButton;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
     private JTextArea textAreaPSF;
     private JButton chooseProteinPsfButton;
     private String ws, tws;
@@ -245,13 +247,39 @@ public class setPdbFiles extends JDialog {
         final JPanel panel6 = new JPanel();
         panel6.setLayout(new BorderLayout(0, 0));
         panel3.add(panel6, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, new Dimension(180, -1), new Dimension(180, -1), null, 0, false));
+        final JPanel panel7 = new JPanel();
+        panel7.setLayout(new BorderLayout(0, 0));
+        panel6.add(panel7, BorderLayout.NORTH);
         textAreaProtein = new JTextArea();
         textAreaProtein.setEditable(false);
         textAreaProtein.setLineWrap(true);
-        panel6.add(textAreaProtein, BorderLayout.CENTER);
+        textAreaProtein.setRows(4);
+        panel7.add(textAreaProtein, BorderLayout.CENTER);
         chooseProteinPdbButton = new JButton();
         chooseProteinPdbButton.setText("Choose protein pdb");
-        panel6.add(chooseProteinPdbButton, BorderLayout.SOUTH);
+        panel7.add(chooseProteinPdbButton, BorderLayout.SOUTH);
+        final JPanel panel8 = new JPanel();
+        panel8.setLayout(new BorderLayout(0, 0));
+        panel6.add(panel8, BorderLayout.CENTER);
+        final JPanel panel9 = new JPanel();
+        panel9.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
+        panel8.add(panel9, BorderLayout.NORTH);
+        radioButton1 = new JRadioButton();
+        radioButton1.setText("RadioButton");
+        panel9.add(radioButton1, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButton2 = new JRadioButton();
+        radioButton2.setText("RadioButton");
+        panel9.add(radioButton2, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JPanel panel10 = new JPanel();
+        panel10.setLayout(new CardLayout(0, 0));
+        panel8.add(panel10, BorderLayout.CENTER);
+        final JPanel panel11 = new JPanel();
+        panel11.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        panel10.add(panel11, "Card1");
+        ButtonGroup buttonGroup;
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(radioButton1);
+        buttonGroup.add(radioButton2);
     }
 
     /**
