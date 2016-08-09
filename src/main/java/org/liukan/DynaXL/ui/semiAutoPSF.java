@@ -55,8 +55,15 @@ public class semiAutoPSF extends JDialog {
         bothDiffsPanel.setLayout(new GridLayout(1, 2));
         JScrollPane spLeft = new JScrollPane(leftDiffPane);
         JScrollPane spRight = new JScrollPane(rightDiffPane);
-        bothDiffsPanel.add(spLeft, BorderLayout.WEST);
-        bothDiffsPanel.add(spRight, BorderLayout.EAST);
+        JPanel JL = new JPanel(new BorderLayout());
+        JL.add(spLeft, BorderLayout.CENTER);
+        JL.add(new JLabel("the PDB file"), BorderLayout.NORTH);
+        JPanel JR = new JPanel(new BorderLayout());
+        JR.add(spRight, BorderLayout.CENTER);
+        JR.add(new JLabel("the PSF file"), BorderLayout.NORTH);
+
+        bothDiffsPanel.add(JL, BorderLayout.WEST);
+        bothDiffsPanel.add(JR, BorderLayout.EAST);
 
         mainPanel.add(bothDiffsPanel, BorderLayout.CENTER);
 
