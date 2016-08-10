@@ -7,10 +7,7 @@ import org.liukan.DynaXL.scriptRes.xPsfGen;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.List;
 
@@ -179,9 +176,11 @@ public class semiAutoPSF extends JDialog {
     private void onOK() {
         try {
             psfPath = workSpacePath + File.separator + proteinPsf;
-            FileWriter fwPsf = new FileWriter(workSpacePath + File.separator + proteinPsf, true);
+            OutputStreamWriter fwPsf = new OutputStreamWriter(new FileOutputStream(workSpacePath + File.separator + proteinPsf), "ASCII");
+            //FileWriter fwPsf = new FileWriter(workSpacePath + File.separator + proteinPsf, true);
             rightDiffPane.write(fwPsf);
-            FileWriter fwPdb = new FileWriter(workSpacePath + File.separator + proteinPdb, true);
+            OutputStreamWriter fwPdb = new OutputStreamWriter(new FileOutputStream(workSpacePath + File.separator + proteinPdb), "ASCII");
+            //FileWriter fwPdb = new FileWriter(workSpacePath + File.separator + proteinPdb, true);
             leftDiffPane.write(fwPdb);
             ok = true;
         } catch (IOException e) {
@@ -242,7 +241,7 @@ public class semiAutoPSF extends JDialog {
         panel2.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1, true, false));
         panel1.add(panel2, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonOK = new JButton();
-        buttonOK.setText("OK");
+        buttonOK.setText("Confirm and Save files");
         panel2.add(buttonOK, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         buttonCancel = new JButton();
         buttonCancel.setText("Cancel");
@@ -251,7 +250,7 @@ public class semiAutoPSF extends JDialog {
         mainPanel.setLayout(new BorderLayout(0, 0));
         contentPane.add(mainPanel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
-        label1.setText("Files editor and reviewer");
+        label1.setText("<html>Files editor and reviewer. <b>Please check the PDB file carefully according to the PSF file, especially at ending.</b></html>");
         mainPanel.add(label1, BorderLayout.NORTH);
     }
 
