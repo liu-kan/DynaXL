@@ -3,6 +3,7 @@ package org.liukan.DynaXL.ui;
 import org.liukan.DynaXL.db.thePath;
 import org.liukan.DynaXL.io.PdbWrapper;
 import org.liukan.DynaXL.io.PdbWrapperRenderer;
+import org.liukan.DynaXL.io.mFiles;
 import org.liukan.DynaXL.io.rwPDB;
 
 import javax.swing.*;
@@ -39,13 +40,14 @@ public class setPdbFiles extends JDialog {
     public String proteinPdbPath;
     public String proteinPsfPath;
     private CardLayout cl;
+    private String xplorDir;
 
-    public setPdbFiles(String ws) {
+    public setPdbFiles(String ws, String xplorDir) {
         $$$setupUI$$$();
         createUICards();
         setContentPane(contentPane);
         setModal(true);
-
+        this.xplorDir = xplorDir;
         ok = false;
         proteinPdbPath = null;
         this.ws = ws;
@@ -226,7 +228,7 @@ public class setPdbFiles extends JDialog {
     }
 
     public static void main(String[] args) {
-        setPdbFiles dialog = new setPdbFiles(null);
+        setPdbFiles dialog = new setPdbFiles(null, null);
         dialog.showCenter();
         System.exit(0);
     }
@@ -246,6 +248,20 @@ public class setPdbFiles extends JDialog {
         semiAutomaticallyGenrateTheButton = new JButton();
         semiAutomaticallyGenrateTheButton.setEnabled(false);
         semiAutomaticallyGenrateTheButton.setText("<html>Semi-automatically genrate the PSF</html>");
+        semiAutomaticallyGenrateTheButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                semiAutoPSF dialog = new semiAutoPSF(ws, xplorDir, textAreaProtein.getText());
+                dialog.showCenter();
+                if (true == dialog.ok) {
+                    String p = dialog.psfPath;
+                    tws = p.substring(0, p.lastIndexOf(File.separator) + 1);
+                    System.out.println(tws);
+                    textAreaAutoPSF.setText(p);
+                    buttonOK.setEnabled(true);
+                }
+            }
+        });
         autoPanel.add(semiAutomaticallyGenrateTheButton, BorderLayout.SOUTH);
         chooseP = new JPanel();
         chooseP.setLayout(new BorderLayout(0, 0));
@@ -270,9 +286,15 @@ public class setPdbFiles extends JDialog {
                     System.out.println("You chose to open this file: " +
                             chooser.getSelectedFile().getName());
                     String p = chooser.getSelectedFile().getAbsolutePath();
-                    tws = p.substring(0, p.lastIndexOf(File.separator) + 1);
-                    System.out.println(tws);
                     textAreaChooPSF.setText(p);
+                    int t = p.lastIndexOf(File.separator);
+                    String psfname = p.substring(t + 1);
+                    mFiles.copyFile(p, ws + File.separator + psfname);
+                    String pdbpath = textAreaProtein.getText();
+                    t = pdbpath.lastIndexOf(File.separator);
+                    String pdbname = pdbpath.substring(t + 1);
+                    mFiles.copyFile(pdbpath, ws + File.separator + pdbname);
+                    buttonOK.setEnabled(true);
                 }
             }
         });
@@ -297,6 +319,7 @@ public class setPdbFiles extends JDialog {
         panel2.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1, true, false));
         panel1.add(panel2, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonOK = new JButton();
+        buttonOK.setEnabled(false);
         buttonOK.setText("OK");
         panel2.add(buttonOK, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         buttonCancel = new JButton();

@@ -39,7 +39,7 @@ public class mFiles {
         copyFile(thePath.getPath()+File.separator+"db"+File.separator+"BS2.top",workSpacePath+File.separator+"BS2.top");
         copyFile(thePath.getPath()+File.separator+"db"+File.separator+"BS3.top",workSpacePath+File.separator+"BS3.top");
     }
-    private boolean copyFile(String s,String t){
+    public static boolean copyFile(String s,String t){
         Path sp=Paths.get(s);
         Path tp=Paths.get(t);
         CopyOption[] options =
@@ -105,11 +105,12 @@ public class mFiles {
         }
         int t=proteinPath.lastIndexOf(File.separator);
         String proteinp=proteinPath.substring(t+1);
-        ppdb.saveFile(workSpacePath+proteinp);
+        //ppdb.saveFile(workSpacePath+proteinp);
 
         this.proteinPdb=proteinp;
 
         this.proteinPsf=proteinp.substring(0,proteinp.toLowerCase().lastIndexOf(".pdb"))+".psf";
+        /*
         xPsfGen psfgen=new xPsfGen();
         try {
             psfgen.init(workSpacePath,xplorPath);
@@ -117,6 +118,7 @@ public class mFiles {
             e.printStackTrace();
         }
         psfgen.execPdb2Psf(proteinPath,workSpacePath+File.separator+proteinPsf);
+        */
         for(int i=0;i<s;i++){
             PdbWrapper pdbw=(PdbWrapper)linkersModel.getElementAt(i);
             rwPDB lpdb=pdbw.getData();
