@@ -49,6 +49,7 @@
           <element id="file-copy" path="$PROJECT_DIR$/res/icons/icon64.png" />
         </element>
       </element>
+      <element id="file-copy" path="$PROJECT_DIR$/src/DynaXL.sh" />
     </root>
   </artifact>
 </component>

@@ -110,6 +110,17 @@ public class CtrlInputPanel {
                     JOptionPane.showMessageDialog(null, "Please input info about Domains and Links!");
                     return;
                 }
+                int val;
+                try {
+                    val = Integer.parseInt(s2);
+                    if (val < 1 || val > 1024) {
+                        JOptionPane.showMessageDialog(null, "Please input a Integer as the size of ensembleSimulation between 1 and 1024");
+                        return;
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Please input a Integer  as the size of ensembleSimulation between 1 and 1024");
+                    return;
+                }
                 domainDef.add(s);
                 domainDef.add(s1);
                 domainDef.add(s2);
@@ -259,6 +270,7 @@ public class CtrlInputPanel {
         label4.setText("The size of EnsembleSimulation:");
         expMode.add(label4, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textSizeOfEns = new JTextField();
+        textSizeOfEns.setText("2");
         expMode.add(textSizeOfEns, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         a2ChoosePDBFilesButton = new JButton();
         a2ChoosePDBFilesButton.setText("2. Choose PDB files");
