@@ -33,7 +33,7 @@ public class rwPDB {
         String line;
         try {
             InputStream fis = new FileInputStream(path);
-            InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+            InputStreamReader isr = new InputStreamReader(fis, Charset.forName("ASCII"));
             BufferedReader br = new BufferedReader(isr);
 
             while ((line = br.readLine()) != null) {

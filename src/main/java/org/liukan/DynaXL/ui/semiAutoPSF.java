@@ -1,16 +1,36 @@
 package org.liukan.DynaXL.ui;
 
+import org.apache.commons.io.FileUtils;
+import org.liukan.DynaXL.io.rwPDB;
+import org.liukan.DynaXL.scriptRes.xPsfGen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import java.util.List;
 
 public class semiAutoPSF extends JDialog {
+    private String workSpacePath;
+    public boolean ok;
+    private String xplorPath;
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JPanel mainPanel;
+    private String proteinPath;
+    private String proteinPdb;
+    private String proteinPsf;
+    private JTextArea rightDiffPane;
+    private JTextArea leftDiffPane;
+    public String psfPath;
 
-    public semiAutoPSF() {
+    public semiAutoPSF(String workSpacePath, String xplorPath, String pdbPath) {
+        proteinPath = pdbPath;
+        ok = false;
+        this.xplorPath = xplorPath;
+        this.workSpacePath = workSpacePath;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -44,10 +64,10 @@ public class semiAutoPSF extends JDialog {
     }
 
     private void textDiffViewer() {
-        JTextPane leftDiffPane = new JTextPane();
-        leftDiffPane.setText("left");
-        JTextPane rightDiffPane = new JTextPane();
-        rightDiffPane.setText("right");
+        leftDiffPane = new JTextArea();
+        leftDiffPane.setFont(new Font("monospaced", Font.PLAIN, 12));
+        rightDiffPane = new JTextArea();
+        rightDiffPane.setFont(new Font("monospaced", Font.PLAIN, 12));
 
         // Wrap the Text Panes with a Panel since you can only
 // have a single component within a scroll pane.
@@ -98,10 +118,74 @@ public class semiAutoPSF extends JDialog {
                 }
             }
         });
+
+        if (this.proteinPath.toLowerCase().endsWith(".pdb")) {
+            rwPDB pdb = new rwPDB(proteinPath);
+            leftDiffPane.setText("");
+            leftDiffPane.setRows(pdb.pdbLines.size());
+            for (String s : pdb.pdbLines) {
+                // Append each string from ArrayList to the end of text in JTextArea
+                // separated by newline
+                leftDiffPane.append(s + System.getProperty("line.separator"));
+                //System.out.println(s);
+            }
+            pdb2psf();
+            rightDiffPane.setText("");
+
+            List<String> psfLines = null;
+            try {
+                psfLines = FileUtils.readLines(new File(workSpacePath + File.separator + proteinPsf));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            rightDiffPane.setRows(psfLines.size());
+            for (String ss : psfLines) {
+                // Append each string from ArrayList to the end of text in JTextArea
+                // separated by newline
+                rightDiffPane.append(ss + System.getProperty("line.separator"));
+            }
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    spLeft.getVerticalScrollBar().setValue(0);
+
+                    spRight.getVerticalScrollBar().setValue(0);
+                }
+            });
+
+
+        }
+    }
+
+    private void pdb2psf() {
+        int t = proteinPath.lastIndexOf(File.separator);
+        String proteinp = proteinPath.substring(t + 1);
+
+        this.proteinPdb = proteinp;
+
+        proteinPsf = proteinp.substring(0, proteinp.toLowerCase().lastIndexOf(".pdb")) + ".psf";
+        xPsfGen psfgen = new xPsfGen();
+        try {
+            psfgen.init(workSpacePath, xplorPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        psfgen.execPdb2Psf(proteinPath, workSpacePath + File.separator + proteinPsf);
     }
 
     private void onOK() {
-        // add your code here
+        try {
+            psfPath = workSpacePath + File.separator + proteinPsf;
+            OutputStreamWriter fwPsf = new OutputStreamWriter(new FileOutputStream(workSpacePath + File.separator + proteinPsf), "ASCII");
+            //FileWriter fwPsf = new FileWriter(workSpacePath + File.separator + proteinPsf, true);
+            rightDiffPane.write(fwPsf);
+            OutputStreamWriter fwPdb = new OutputStreamWriter(new FileOutputStream(workSpacePath + File.separator + proteinPdb), "ASCII");
+            //FileWriter fwPdb = new FileWriter(workSpacePath + File.separator + proteinPdb, true);
+            leftDiffPane.write(fwPdb);
+            ok = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         dispose();
     }
 
@@ -110,9 +194,22 @@ public class semiAutoPSF extends JDialog {
         dispose();
     }
 
+    public void showCenter() {
+        setPreferredSize(new Dimension(1024, 600));
+        pack();
+        //setPreferredSize(new Dimension(320, 400));
+        final Toolkit toolkit = Toolkit.getDefaultToolkit();
+        final Dimension screenSize = toolkit.getScreenSize();
+        final int x = (screenSize.width - getWidth()) / 2;
+        final int y = (screenSize.height - getHeight()) / 2;
+        setLocation(x, y);
+        setVisible(true);
+
+    }
+
     public static void main(String[] args) {
-        semiAutoPSF dialog = new semiAutoPSF();
-        dialog.setPreferredSize(new Dimension(500, 400));
+        semiAutoPSF dialog = new semiAutoPSF("/home/liuk/wp", "/home/liuk/bin", "/home/liuk/proj/DynaXL/db/3eza_AH.pdb");
+        dialog.setPreferredSize(new Dimension(1024, 600));
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
@@ -144,7 +241,7 @@ public class semiAutoPSF extends JDialog {
         panel2.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1, true, false));
         panel1.add(panel2, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonOK = new JButton();
-        buttonOK.setText("OK");
+        buttonOK.setText("Confirm and Save files");
         panel2.add(buttonOK, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         buttonCancel = new JButton();
         buttonCancel.setText("Cancel");
@@ -153,7 +250,7 @@ public class semiAutoPSF extends JDialog {
         mainPanel.setLayout(new BorderLayout(0, 0));
         contentPane.add(mainPanel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
-        label1.setText("Files editor and reviewer");
+        label1.setText("<html>Files editor and reviewer. <b>Please check the PDB file carefully according to the PSF file, especially at ending.</b></html>");
         mainPanel.add(label1, BorderLayout.NORTH);
     }
 

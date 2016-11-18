@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
-Class-Path: libs/miglayout-4.0-ideutil.jar libs/miglayout-4.0-swing.ja
- r libs/miglayout-4.0.jar libs/jcolorbrewer-5.2.jar libs/log4j-core-2.
- 5.jar libs/vecmath-1.3.1.jar libs/slf4j-api-1.7.14.jar libs/biojava-p
- hylo-4.2.0.jar libs/jgrapht-core-0.9.1.jar libs/forester-1.038.jar li
- bs/mgraphEx.jar libs/freemarker.jar libs/miglayout-4.0.jar libs/commo
- ns-io-2.5.jar libs/commons-exec-1.3.jar libs/miglayout-4.0-swing.jar 
- libs/sqlite-jdbc-3.8.11.2.jar libs/miglayout-4.0-ideutil.jar libs/log
- 4j-api-2.5.jar libs/biojava-structure-4.2.0.jar libs/log4j-slf4j-impl
- -2.5.jar libs/biojava-core-4.2.1.jar libs/biojava-structure-gui-4.2.0
- .jar libs/jmol-13.0.14.jar libs/biojava-alignment-4.2.0.jar
+Class-Path: libs/biojava-alignment-4.2.0.jar libs/biojava-structure-gu
+ i-4.2.0.jar libs/forester-1.038.jar libs/jmol-13.0.14.jar libs/mgraph
+ Ex.jar libs/slf4j-api-1.7.14.jar libs/biojava-core-4.2.1.jar libs/com
+ mons-exec-1.3.jar libs/freemarker.jar libs/log4j-api-2.5.jar libs/mig
+ layout-4.0-ideutil.jar libs/sqlite-jdbc-3.8.11.2.jar libs/biojava-phy
+ lo-4.2.0.jar libs/commons-io-2.5.jar libs/jcolorbrewer-5.2.jar libs/l
+ og4j-slf4j-impl-2.5.jar libs/miglayout-4.0.jar libs/vecmath-1.3.1.jar
+  libs/biojava-structure-4.2.0.jar libs/commons-lang3-3.4.jar libs/jgr
+ apht-core-0.9.1.jar libs/mgraphEx-doc.jar libs/miglayout-4.0-swing.ja
+ r
 Main-Class: org.liukan.DynaXL.crossLinkingUI
 

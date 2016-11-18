@@ -151,7 +151,7 @@ public class CtrlInputPanel {
         a2ChoosePDBFilesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setpdbfiles = new setPdbFiles(WorkSpaceDir);
+                setpdbfiles = new setPdbFiles(WorkSpaceDir, XplorPath);
 
                 setpdbfiles.showCenter();
 

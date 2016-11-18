@@ -90,6 +90,7 @@ public class pdbFileChooser extends JDialog {
         fileChooser.setPreferredSize(new Dimension(400, 500));
         fileCandP.add(fileChooser, BorderLayout.WEST);
         textPDB.setPreferredSize(new Dimension(400, 500));
+        textPDB.setFont(new Font("monospaced", Font.PLAIN, 12));
         fileChooser.addPropertyChangeListener(new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (JFileChooser.SELECTED_FILE_CHANGED_PROPERTY.equals(evt.getPropertyName())) {
