@@ -46,7 +46,7 @@ public class crossLinkingUI {
         frame.getContentPane().add(p,BorderLayout.EAST);
         frame.setIconImages(ResourceUtil.getIconImages());
         frame.pack();
-        frame.setSize( 820,600);
+        frame.setSize( 820,650);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.addWindowListener(new WindowAdapter()

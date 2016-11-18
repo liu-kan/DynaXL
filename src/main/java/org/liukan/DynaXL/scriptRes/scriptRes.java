@@ -27,6 +27,7 @@ public class scriptRes
     public ArrayList<String> linkFileNames;
     public String ProteinPdb;
     public String ProteinPsf;
+    public String ensSize;
     private String outDir;
     public ArrayList<String> dynFixs;
     public ArrayList<String> dynGroups;
@@ -75,6 +76,7 @@ public class scriptRes
         root.put( "dynGroups",dynGroups);
         root.put( "linkRs",linkRs);
         root.put("breakResids",breakResids);
+        root.put("ensSize",ensSize);
         if(ProteinPdb.toLowerCase().endsWith(".pdb"))
             ProteinPdb=ProteinPdb.substring(0,ProteinPdb.toLowerCase().indexOf(".pdb"));
         root.put("proteinPdb",ProteinPdb);

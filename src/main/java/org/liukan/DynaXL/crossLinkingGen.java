@@ -297,6 +297,7 @@ public class crossLinkingGen {
         }
         genSegid();
         crossLinkResid();
+        scripts.ensSize=domainDef.get(2);
         try {
             scripts.process();
         } catch (Exception e) {

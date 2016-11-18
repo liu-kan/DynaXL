@@ -26,7 +26,7 @@ protocol.initStruct('ein_explicit.psf')
 protocol.initCoords('ein_explicit.pdb')
 
 from ensembleSimulation import EnsembleSimulation
-esim=EnsembleSimulation('ens',2)
+esim=EnsembleSimulation('ens',${ensSize})
 esim.setAveType('sum')
 
 from potList import PotList
